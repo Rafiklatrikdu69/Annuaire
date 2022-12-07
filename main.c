@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#include "tempCodeRunnerFile.c"
+#include "fonction.h"
+
 
 
 /*void(const afficher  personne)*pp*/
@@ -18,37 +19,17 @@ int n = 0;
 //int m  =sizeof((&r)->nom)/256;
 
     printf("/*******************Annuaire Client*******************\n");
-/*printf("\n 1->Afficher Annuaire\n");
-printf("\n 2->RechercheClient\n");
-*/
+    //Preparation du fichier texte et affichage de l'annuaire
+AffichageAnnuaire(&r);
+CopieAnnuaireFichier(&r);
+verifeClient(&r);
+//Ajout du client
 /*
- saisirClient(&r);
- ajoutClient(&r);
-*/
-
-//AffichageAnnuaire(&r);
 saisirClient(&r);
-
-
-//ajoutClient(&r);
-tri_client(&r);
-
-
-
-
-
-    
- 
-/* 
-switch(n){
-case 1:
-        saisirClient(&r);
-    break;
-default :
-    printf("erreur de choix");
-    break;
-}
+verifeClient(&r);
+ajoutClient(&r);
 */
+//
 }
 
 
