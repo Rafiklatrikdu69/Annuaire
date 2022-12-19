@@ -248,7 +248,7 @@ fclose(fichier);
                       if (stricmp(r.donnes[i], r.donnes[j])> 0)//la fonction stricmp permet de comparer des chaines de caracteres en faisant abstraction des majuscules et miniscules
                         {
                             //permutation des valeurs
-                          strcpy(r.temp,r.donnes[i]);//chaine[i]=temp
+                          strcpy(r.temp,r.donnes[i]);//temp=chaine[i]
                           strcpy(r.donnes[i],r.donnes[j]);//chaine[i]=chaine[j]
                           strcpy(r.donnes[j],r.temp);//chaine[j]=temp
 
