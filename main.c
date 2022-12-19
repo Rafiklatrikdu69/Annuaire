@@ -1,9 +1,16 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
 #include "fonction.h"
 
-
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 /*void(const afficher  personne)*pp*/
 
@@ -25,21 +32,7 @@ double *p = (double*)malloc(10*sizeof(double));
 char *c = (char*)malloc(15*sizeof(char));
 
 */
-void doublons(char *doub[], int taille)
- {
 
-   int i, j;
-
-   for (i = 0; i < taille; i++)
-    for (j = i+1; j < taille; j++)
-      if (stricmp(doub[i], doub[j]) == 0)
-        {
-          printf("\nil ya des doublons\n");
-        printf("\nles doublons sont : %s et %s",doub[i], doub[j]);
-
-        }
-
-  }
 
 int main()
 {
@@ -49,7 +42,7 @@ int main()
 
 
     Client r;
-
+    doublons d;
 
 //int m  =sizeof((&r)->nom)/256;
 
@@ -66,10 +59,23 @@ ajoutClient(&r);
 
 
 
-   char *valeurs[] = {"rafik", "Aziz", "Ras", "walid", "walid"};
+tri_client(&d);
+
+/*
+for(int i = 0;i<ligne;i++){
+    printf("%s",donnes[i]);
+}
+*/
+ //printf("%s",donnes[280]);
+// doublons(donnes, ligne);
+//verif_annuaire(&r);
 
 
-   doublons(valeurs, 5);
+
+
+
+
+
 
  return 0;
 }
