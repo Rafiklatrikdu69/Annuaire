@@ -121,44 +121,54 @@ fichier = fopen("fichier2.txt","r");//ouverture du fichier en lecture pour lire 
 char chaine[100];//taille a changer avec l'allocation dynamique...
 char temp[256];//cette variable permet de stocker temporairement la chaine -> taille a changer avec l'allocation dynamique...
 char chaine2[256];//taille a changer avec l'allocation dynamique...
+char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
    printf("La premiere lettre doit etre en majuscule ! \n");
-
-
+ puts("les caracteres speciaux ne sont pas acceptees-> nom !!! \n");
+while(strcmp(p.nom_p,"a") != 0 || strcmp(p.nom_p,"z") != 0 ){
             printf("Nom\n");
             fgets(p.nom_p,sizeof(p.nom_p),stdin);//fgets->saisie de chaine de caracteres
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';
 
+}
 
-
-
+puts("les caracteres speciaux ne sont pas acceptees -> prenom !!!\n");
+while(stricmp(p.prenom_p,"a") < 0 || stricmp(p.prenom_p,"z") > 0 ){
             printf("Prenom\n");
             fgets(p.prenom_p,sizeof(p.prenom_p),stdin);
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';
 
+}
 
-
-
+puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
+while(stricmp(p.code_postal_p,"0") < 0 || stricmp(p.code_postal_p,"9") > 0 ){
             printf("Code postal\n");
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
 
+}
 
-
-
+ puts("les caracteres speciaux ne sont pas acceptees -> ville!!!\n");
+while(strcmp(p.ville_p,"a") < 0 || strcmp(p.ville_p,"z") > 0 ){
             printf("Ville\n");
             fgets(p.ville_p,sizeof(p.ville_p),stdin);
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';
 
 
+}
+puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
+while(strcmp(p.telephone_p,"0") < 0 || strcmp(p.telephone_p,"9") > 0 ){
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
 
+}
+ puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
+while(stricmp(p.mel_p,"a") < 0 || stricmp(p.mel_p,"z") > 0 ){
             printf("Adresse mail\n");
             fgets( p.mel_p,sizeof(p.mel_p),stdin);
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
 
-
+}
             while(!feof(fichier)){
 
                     fscanf(fichier,"%s",chaine2);//cela permet de scanner le fichier
@@ -176,20 +186,12 @@ char chaine2[256];//taille a changer avec l'allocation dynamique...
 
 
             fclose(fichier);//je ferme le fichier avec fclose
-
-
+ puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
+while(stricmp(p.profession_p,"a") < 0 || stricmp(p.profession_p,"z") > 0 ){
             printf("profession_p\n");
             fgets(p.profession_p,sizeof(p.profession_p),stdin);
             p.profession_p[strcspn(p.profession_p,"\r\n")] = '\0';
-
-
-
-
-
-
-
-
-
+}
 
 }
 void Verifier_validite_annuaire(const doublons *d){
