@@ -41,34 +41,18 @@ int main()
 //calloc : initialise tout a 0 voir -> cppreference
 
 
-    Client r;
-    doublons d;
-
-//int m  =sizeof((&r)->nom)/256;
-
-    printf("/*******************Annuaire Client*******************\n");
-    //Preparation du fichier texte et affichage de l'annuaire
-//verifeClient(&r);
-//ajoutClient(&r);
-
-//saisirClient(&r);
-/*
-verifeClient(&r);
-ajoutClient(&r);
-*/
+Client r;
+doublons d;
 
 
 
-tri_client(&d);
+printf("/*******************Annuaire Client*******************\n");
 
-/*
-for(int i = 0;i<ligne;i++){
-    printf("%s",donnes[i]);
-}
-*/
- //printf("%s",donnes[280]);
-// doublons(donnes, ligne);
-//verif_annuaire(&r);
+//Afficher_annuaire_clients(&r);
+//ajouter_Client(&r);
+//Verifier_validite_annuaire(&d);
+//Ecriture_annuaire_clients(&r);
+//Separation_mel_p(&r);
 
 
 
