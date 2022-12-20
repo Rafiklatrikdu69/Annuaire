@@ -1,5 +1,5 @@
 /**< \file fonction.h */
-#pragma once
+#pragma once//programmation modulaire
 #define SIZE 100
 #define VILLE 50
 #define TEL 15
@@ -24,54 +24,19 @@ struct Client_{
 
 };
 typedef struct Client_ Client;//notation moins lourde
-void ajoutClient(const  Client *Id_client);
-void AffichageAnnuaire(const Client *Id_client);
-void verifeClient( Client *Id_client);
-void  RechercheClient(const Client *Id_client);
-void saisirClient(   Client *Id_client);
-void CopieAnnuaireFichier(const Client *Id_client);
+void ajouter_Client(  const Client *Id_client);
+void Afficher_annuaire_clients(const Client *Id_client);
+void Ecriture_annuaire_clients(const Client *Id_client);
+void Separation_mel_p( Client *Id_client);
 
-void verif_annuaire(const Client *Id_client);
-//int CompareChaine(const  void  *a,const  void  *b);
-//return strcmp(pa,pb);
 //déclaration de la structure doublons pour tester la validité de l'annuaire
 struct doublons_{
-char temp[1000];//taille a changer avec l'allocation dynamique...
-char donnes[1000][1000];//taille a changer avec l'allocation dynamique...
-int ligne;
 
+        char temp[1000];//taille a changer avec l'allocation dynamique...
+        char donnes[1000][1000];//taille a changer avec l'allocation dynamique...
+        int ligne;
 
- };
-
- typedef struct doublons_ doublons;//notation moins lourde
+};
+typedef struct doublons_ doublons;//notation moins lourde
 void tri_client(const doublons *d);
-
-
-
-
-
-
-
-
-
-
-/*#ifndef _MYFUNCTIONS_H_
-#define _MYFUNCCTIONS_H_*/
-/**
-*
-*
-*
-*/
-/*unsigned long int factorielle(int n);*/
-/*int RechercheClient(int Id_client);*/
-/** \brief
- *
- * \return void
- *
- */
-/*void AjouterClient();*/
-/*
-#endif
-
-
-*/
+void Verifier_validite_annuaire(const doublons *d);
