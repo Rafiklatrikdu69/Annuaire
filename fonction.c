@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
+#include<assert.h>
 #include "fonction.h"
 
 
@@ -121,51 +122,58 @@ fichier = fopen("fichier2.txt","r");//ouverture du fichier en lecture pour lire 
 //char chaine[100];//taille a changer avec l'allocation dynamique...
 char temp[256];//cette variable permet de stocker temporairement la chaine -> taille a changer avec l'allocation dynamique...
 char chaine2[256];//taille a changer avec l'allocation dynamique...
+//p.nom_p =   (char *) malloc (1*sizeof(char));
 //char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
    printf("La premiere lettre doit etre en majuscule ! \n");
 
-
+NOM:{
             printf("Nom\n");
             fgets(p.nom_p,sizeof(p.nom_p),stdin);//fgets->saisie de chaine de caracteres
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';
             //apres que l'utilisateur entre ses coordonees je detecte avec une boucle si chaque caracteres et compris entre a et z ou A et Z en se basant sur le code ascii
              // je detecte les erreurs possibles lors de la saisie du numero de telephone ou du code postale
             for(int i = 0;i<strlen(p.nom_p);i++){
-                if((p.nom_p[i]>='a' && p.nom_p[i]<='z') || (p.nom_p[i]>='A' && p.nom_p[i]<='Z')){
+                if((p.nom_p[i]>='a' && p.nom_p[i]<='z') || (p.nom_p[i]>='A' && p.nom_p[i]<='Z') || p.nom_p[i]=='-'){
+
                         continue;
+
 
                 }
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf("caracteres trouver -> %c \n",p.nom_p[i]);
+                    goto NOM;
+
 
                 }
             }
+}
+
 
 //puts("les caracteres speciaux ne sont pas acceptees -> prenom !!!\n");
-
+PRENOM:{
             printf("Prenom\n");
             fgets(p.prenom_p,sizeof(p.prenom_p),stdin);
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';
 
             for(int i = 0;i<strlen(p.prenom_p);i++){
-                if((p.prenom_p[i]>='a' && p.prenom_p[i]<='z') || (p.prenom_p[i]>='A' && p.prenom_p[i]<='Z')){
+                if((p.prenom_p[i]>='a' && p.prenom_p[i]<='z') || (p.prenom_p[i]>='A' && p.prenom_p[i]<='Z') || p.prenom_p[i]=='-'){
                         continue;
 
                 }
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf(" caracteres trouver -> %c \n",p.prenom_p[i]);
-
+                    goto PRENOM;
                 }
             }
-
+}
 //puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
-
+CODEPOSTAL:{
             printf("Code postal\n");
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
-
+            assert(strlen( p.code_postal_p) == 5);
             for(int i = 0;i<strlen(p.code_postal_p);i++){
                 if((p.code_postal_p[i]>='0' && p.code_postal_p[i]<='9')){
                         continue;
@@ -174,30 +182,31 @@ char chaine2[256];//taille a changer avec l'allocation dynamique...
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf("caracteres trouver -> %c \n",p.code_postal_p[i]);
-
+                    goto CODEPOSTAL;
                 }
             }
+}
 
-//puts("les caracteres speciaux ne sont pas acceptees -> ville!!!\n");
-
+VIL:{
             printf("Ville\n");
             fgets(p.ville_p,sizeof(p.ville_p),stdin);
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';
 
 
             for(int i = 0;i<strlen(p.ville_p);i++){
-                if((p.ville_p[i]>='a' && p.ville_p[i]<='z')|| (p.ville_p[i]>='A' && p.ville_p[i]<='Z')){
+                if((p.ville_p[i]>='a' && p.ville_p[i]<='z')|| (p.ville_p[i]>='A' && p.ville_p[i]<='Z') || p.ville_p[i]=='-'){
                         continue;
 
                 }
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf("caracteres trouver -> %c \n",p.ville_p[i]);
-
+                    goto VIL;
                 }
             }
+}
 //puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
-
+TELEPHONE:{
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
@@ -210,26 +219,67 @@ char chaine2[256];//taille a changer avec l'allocation dynamique...
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf("caracteres trouver -> %c \n",p.telephone_p[i]);
-
+                    goto TELEPHONE;
                 }
             }
+}
 //puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
-
+MEL:{
             printf("Adresse mail\n");
             fgets( p.mel_p,sizeof(p.mel_p),stdin);
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
-            if(p.mel_p[0]=='\0'){printf("l'adresse mail donne obligatoirment etre renseigner\n");}
+            if(p.mel_p[0]=='\0'){printf("l'adresse mail donne obligatoirement etre renseigner\n");goto MEL;}
             for(int i = 0;i<strlen(p.mel_p);i++){
-                if((p.mel_p[i]>='a' && p.mel_p[i]<='z')|| (p.mel_p[i]>='A' && p.mel_p[i]<='Z') || p.mel_p[i]=='@' || p.mel_p[i]=='-' || p.mel_p[i]=='.'){
+                    /*
+                    Cette fonction prend deux chaînes chaine 1  et chaine 2 comme argument ,
+                    elle trouve la première occurrence de la sous-chaine chaine 2 dans la chaîne chaine 1.
+                    */
+                    assert(strstr(p.mel_p,"@"));//test en boit noire
+                    assert(strstr(p.mel_p,"."));
+
+                if((p.mel_p[i]>='a' && p.mel_p[i]<='z')|| (p.mel_p[i]>='A' && p.mel_p[i]<='Z') || p.mel_p[i]=='-'|| strstr(p.mel_p,"@")|| strstr(p.mel_p,".")){
                         continue;
 
                 }
                 else{
                     puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                     printf("caracteres trouver -> %c \n",p.mel_p[i]);
-
+                    goto MEL;
                 }
+
             }
+            int occurrence1 = 0;
+            int occurrence2 = 0;
+                        for(int i  = 0; p.mel_p[i] != '\0'; i++)
+                        {
+                               if(p.mel_p[i] == '@'){
+                                   occurrence1++;
+                               }
+                               if(p.mel_p[i] == '.'){
+                                   occurrence2++;
+                               }
+                        }
+                        switch(occurrence1){
+                        case 1:
+                            break;
+                        default:
+                            printf("vous pouvez utiliser qu'un seul @ pour votre adresse mail\n");
+                            goto MEL;
+
+                        }
+                         switch(occurrence2){
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        default:
+                            printf("vous pouvez utiliser jusqu'a deux . pour votre adresse mail\n");
+                            goto MEL;
+
+                        }
+
+                         printf("Le nombre d’occurrence de @ est %d\n", occurrence1);
+                         printf("Le nombre d’occurrence de . est %d\n", occurrence2);
 
             while(!feof(fichier)){
 
@@ -237,9 +287,12 @@ char chaine2[256];//taille a changer avec l'allocation dynamique...
                 //printf("%s",chaine2);
                 strcpy(temp,chaine2);//je copie cette chaine qui est scanner dans ma variable temp
                 //printf("%s\n",temp);
-                    if(strcmp(temp, p.mel_p) == 0){//utilisation strcmp qui permet de comparer deux chaine si les deux chaine sont égales alors la chaine et deja presente donc mel_p n'est pas valide
+                    if(stricmp(temp, p.mel_p) == 0){//utilisation strcmp qui permet de comparer deux chaine si les deux chaine sont égales alors la chaine et deja presente donc mel_p n'est pas valide
                         printf("la chaine :%s existe deja\n",p.mel_p);
-                        break;//pas pratique mais utile pour le deboggage...
+                        rewind(fichier);//permet de revenir au tout debut du fichier pour apres recommencer l'instruction
+                        goto MEL;//je remplace break par goto si la chaine existe alors je demande indirectement a l'utilisateur de recommencer sa saisie
+
+                        //break;//pas pratique mais utile pour le deboggage...
                     }
                     else{
                         //printf("la chaine :%s n' existe pas\n",chaine);
@@ -248,23 +301,26 @@ char chaine2[256];//taille a changer avec l'allocation dynamique...
 
 
             fclose(fichier);//je ferme le fichier avec fclose
+}
 //puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
-
+PROFESSION:{
             printf("profession\n");
             fgets(p.profession_p,sizeof(p.profession_p),stdin);
             p.profession_p[strcspn(p.profession_p,"\r\n")] = '\0';
 
             for(int i = 0;i<strlen(p.profession_p);i++){
-            if((p.profession_p[i]>='a' && p.profession_p[i]<='z') || (p.profession_p[i]>='A' && p.profession_p[i]<='Z')){
+            if((p.profession_p[i]>='a' && p.profession_p[i]<='z') || (p.profession_p[i]>='A' && p.profession_p[i]<='Z')|| p.profession_p[i]=='-'){
                     continue;
 
             }
             else{
                 puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
                 printf("caracteres trouver -> %c \n",p.profession_p[i]);
-
+                goto PROFESSION;
             }
         }
+}
+
 
 }
 void Verifier_validite_annuaire(const doublons *d){
