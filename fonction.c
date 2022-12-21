@@ -132,8 +132,10 @@ p.profession_p = (char *) malloc (100*sizeof(char));
 //p.nom_p =   (char *) malloc (1*sizeof(char));
 //char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
    printf("La premiere lettre doit etre en majuscule ! \n");
-
+//Probleme avec fgets -> le menu fait sautr ma saisie du nom alors que avec un scanf rien ne saute fgets(p.nom_p,TAILLE,stdin);
+fgetc(stdin);//pour empecher que le fgets sur le nom saute
 NOM:{
+
             printf("Nom\n");
             fgets(p.nom_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';
@@ -195,6 +197,7 @@ PRENOM:{
                 }
             }
             fprintf(fichier2,"%s,",p.prenom_p);
+            free(p.prenom_p);
 }
 //puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
 CODEPOSTAL:{
@@ -242,6 +245,7 @@ VIL:{
                 }
             }
             fprintf(fichier2,"%s,",p.ville_p);
+            free(p.ville_p);
 }
 //puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
 TELEPHONE:{
@@ -261,7 +265,11 @@ TELEPHONE:{
                     goto TELEPHONE;
                 }
             }
-            fprintf(fichier2,"%s,",p.telephone_p);
+            for(int i = 0;i<strlen(p.telephone_p);i++){
+                fprintf(fichier2,"%c%c.",p.telephone_p[i],p.telephone_p[i+1]);
+                i++;
+            }
+            //fprintf(fichier2,"%s,",p.telephone_p);
 }
 //puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
 MEL:{
@@ -330,7 +338,7 @@ MEL:{
 
                          printf("Le nombre d’occurrence de @ est %d\n", c.occurrence1);
                          printf("Le nombre d’occurrence de . est %d\n", c.occurrence2);
-
+int cpt = 0;
             while(!feof(fichier)){
 
                     fscanf(fichier,"%s",chaine2);//cela permet de scanner le fichier
@@ -343,18 +351,35 @@ MEL:{
                 //printf("%s\n",temp);
                     if(stricmp(temp, p.mel_p) == 0){//utilisation strcmp qui permet de comparer deux chaine si les deux chaine sont égales alors la chaine et deja presente donc mel_p n'est pas valide
                         printf("la chaine :%s existe deja\n",p.mel_p);
-                        rewind(fichier);//permet de revenir au tout debut du fichier pour apres recommencer l'instruction
-                        goto MEL;//je remplace break par goto si la chaine existe alors je demande indirectement a l'utilisateur de recommencer sa saisie
+                        cpt = 1;
+                        //permet de revenir au tout debut du fichier pour apres recommencer l'instruction
+                        goto MEL;
+                        rewind(fichier);//je remplace break par goto si la chaine existe alors je demande indirectement a l'utilisateur de recommencer sa saisie
 
                         //break;//pas pratique mais utile pour le deboggage...
                     }
                     else{
+                    cpt = 0;
+
+
+                            continue;
                         //printf("la chaine :%s n' existe pas\n",chaine);
                     }
+
+
+
             }
+
 fprintf(fichier2,"%s,",p.mel_p);
 
             fclose(fichier);//je ferme le fichier avec fclose
+            if(cpt == 0){
+               goto PROFESSION;
+            }
+            free(temp);
+            free(chaine2);
+            free(p.mel_p);
+
 }
 //puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
 PROFESSION:{
@@ -380,20 +405,16 @@ PROFESSION:{
                 goto PROFESSION;
             }
         }
-        fprintf(fichier2,"%s,",p.profession_p);
+        goto V;
+        fprintf(fichier2,"%s\n",p.profession_p);
         fclose(fichier2);
+        free(p.profession_p);
 }
 
 
 
 
 
-free(temp);
-free(chaine2);
-free(p.prenom_p);
-free(p.ville_p);
-free(p.mel_p);
-free(p.profession_p);
 
 }
 void Verifier_validite_annuaire(const doublons *d){
@@ -445,7 +466,9 @@ while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n
 
 }
 
-
+V:{
+    printf("fini");
+}
 
 
 //trie a bulle -> fonctionnement : si l'élement a l'indice i = 0 est supérieur a l'indice i+1 (l'element voisin) alors on permute les elements jusqu'a le tableau soit trié
