@@ -4,6 +4,7 @@
 #include<string.h>
 #include "fonction.h"
 
+
 /** \brief
  *
  * \param
@@ -43,19 +44,28 @@ int main()
 
 Client r;
 doublons d;
-
+int n;
 
 
 printf("/*******************Annuaire Client*******************\n");
 
 //Afficher_annuaire_clients(&r);
-ajouter_Client(&r);
+//ajouter_Client(&r);
 //Verifier_validite_annuaire(&d);
 //Ecriture_annuaire_clients(&r);
 //Separation_mel_p(&r);
+//tri_client(&d);
+printf("entrer votre choix\n");
+scanf("%d",&n);
 
+switch(n){
+case 1:
+    ajouter_Client(&r);
+break;
+default :
+    printf("erreur");
 
-
+}
 
 
 
