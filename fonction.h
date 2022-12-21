@@ -28,6 +28,7 @@ void Ecriture_annuaire_clients(const Client *Id_client);
 void Separation_mel_p( Client *Id_client);
 
 
+
 //déclaration de la structure doublons pour tester la validité de l'annuaire
 struct doublons_{
 
