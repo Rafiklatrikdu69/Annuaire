@@ -119,6 +119,8 @@ void ajouter_Client(  const Client *Id_client){
     occurence c;
 FILE*fichier;
 fichier = fopen("fichier2.txt","r");//ouverture du fichier en lecture pour lire les adresses mails
+FILE*fichier2;
+fichier2 = fopen("fichier.txt","a");//ouverture du fichier en lecture pour lire les adresses mails
 //char chaine[100];//taille a changer avec l'allocation dynamique...
 char *temp = (char *) malloc (50*sizeof(char));//j'alloue une taille de 50 octets etant donnes qu'un char = 1 octet
 char *chaine2 = (char *) malloc (50*sizeof(char));
@@ -135,10 +137,14 @@ NOM:{
             printf("Nom\n");
             fgets(p.nom_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';
+
             if(p.nom_p[0] != '\0'){
+
                 p.nom_p = (char*)realloc(p.nom_p,strlen(p.nom_p)*sizeof(char));
+
             }
             else{
+                fprintf(fichier2,"%s,",p.nom_p);
                 goto PRENOM;
             }
 
@@ -159,6 +165,8 @@ NOM:{
 
                 }
             }
+            fprintf(fichier2,"%s,",p.nom_p);
+
 }
 
 
@@ -171,6 +179,7 @@ PRENOM:{
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
+                fprintf(fichier2,"%s,",p.prenom_p);
                 goto CODEPOSTAL;
             }
 
@@ -185,13 +194,14 @@ PRENOM:{
                     goto PRENOM;
                 }
             }
+            fprintf(fichier2,"%s,",p.prenom_p);
 }
 //puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
 CODEPOSTAL:{
             printf("Code postal\n");
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
-if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
+            if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
 
             for(int i = 0;i<strlen(p.code_postal_p);i++){
                 if((p.code_postal_p[i]>='0' && p.code_postal_p[i]<='9')){
@@ -204,6 +214,7 @@ if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
                     goto CODEPOSTAL;
                 }
             }
+            fprintf(fichier2,"%s,",p.code_postal_p);
 }
 
 VIL:{
@@ -214,6 +225,7 @@ VIL:{
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
+                    fprintf(fichier2,"%s,",p.ville_p);
                 goto TELEPHONE;
             }
 
@@ -229,6 +241,7 @@ VIL:{
                     goto VIL;
                 }
             }
+            fprintf(fichier2,"%s,",p.ville_p);
 }
 //puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
 TELEPHONE:{
@@ -248,6 +261,7 @@ TELEPHONE:{
                     goto TELEPHONE;
                 }
             }
+            fprintf(fichier2,"%s,",p.telephone_p);
 }
 //puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
 MEL:{
@@ -338,7 +352,7 @@ MEL:{
                         //printf("la chaine :%s n' existe pas\n",chaine);
                     }
             }
-
+fprintf(fichier2,"%s,",p.mel_p);
 
             fclose(fichier);//je ferme le fichier avec fclose
 }
@@ -352,6 +366,7 @@ PROFESSION:{
                    p.profession_p = (char*)realloc(p.profession_p,strlen(p.profession_p)*sizeof(char));
                     }
                     else{
+                            fprintf(fichier2,"%s,",p.profession_p);
                             exit(1);
                     }
             for(int i = 0;i<strlen(p.profession_p);i++){
@@ -365,6 +380,8 @@ PROFESSION:{
                 goto PROFESSION;
             }
         }
+        fprintf(fichier2,"%s,",p.profession_p);
+        fclose(fichier2);
 }
 
 
@@ -414,11 +431,23 @@ while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n
 
 void tri_client(const doublons *d){
     //fonction de trie a completer en faisant attention aux clients qui n'ont pas renseigné les leur noms
-
+FILE*fichier;
+fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
  int i, j;
 
 doublons r;
 r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
+
+while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
+            if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
+                r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
+            }
+
+}
+
+
+
+
 //trie a bulle -> fonctionnement : si l'élement a l'indice i = 0 est supérieur a l'indice i+1 (l'element voisin) alors on permute les elements jusqu'a le tableau soit trié
    for (i = 0; i < r.ligne; i++){
             for (j = i+1; j < r.ligne; j++){
@@ -439,7 +468,7 @@ r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure dou
             printf("%s\n",r.donnes[i]);
         }
 
-
+fclose(fichier);
 
 }
 
