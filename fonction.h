@@ -1,6 +1,6 @@
 /**< \file fonction.h */
 #pragma once//programmation modulaire
-#define SIZE 100
+#define SIZE 60
 #define VILLE 50
 #define TEL 15
 /** \brief
@@ -13,7 +13,7 @@
 //attention au warning
 //declaration de la structure client
 struct Client_{
-
+        //char *nom_p;en cours de developpement-> allocation dynamique
         char nom_p[SIZE];//taille a changer avec l'allocation dynamique...
         char prenom_p[SIZE];//taille a changer avec l'allocation dynamique...
         char code_postal_p[SIZE];//taille a changer avec l'allocation dynamique...
@@ -34,7 +34,7 @@ struct doublons_{
 
         char temp[1000];//taille a changer avec l'allocation dynamique...
         char donnes[1000][1000];//taille a changer avec l'allocation dynamique...
-        int ligne;
+        unsigned ligne;
 
 };
 typedef struct doublons_ doublons;//notation moins lourde
