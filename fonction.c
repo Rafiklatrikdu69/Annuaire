@@ -118,57 +118,119 @@ void ajouter_Client(  const Client *Id_client){
 
 FILE*fichier;
 fichier = fopen("fichier2.txt","r");//ouverture du fichier en lecture pour lire les adresses mails
-char chaine[100];//taille a changer avec l'allocation dynamique...
+//char chaine[100];//taille a changer avec l'allocation dynamique...
 char temp[256];//cette variable permet de stocker temporairement la chaine -> taille a changer avec l'allocation dynamique...
 char chaine2[256];//taille a changer avec l'allocation dynamique...
-char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
+//char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
    printf("La premiere lettre doit etre en majuscule ! \n");
- puts("les caracteres speciaux ne sont pas acceptees-> nom !!! \n");
-while(strcmp(p.nom_p,"a") != 0 || strcmp(p.nom_p,"z") != 0 ){
+
+
             printf("Nom\n");
             fgets(p.nom_p,sizeof(p.nom_p),stdin);//fgets->saisie de chaine de caracteres
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';
+            //apres que l'utilisateur entre ses coordonees je detecte avec une boucle si chaque caracteres et compris entre a et z ou A et Z en se basant sur le code ascii
+             // je detecte les erreurs possibles lors de la saisie du numero de telephone ou du code postale
+            for(int i = 0;i<strlen(p.nom_p);i++){
+                if((p.nom_p[i]>='a' && p.nom_p[i]<='z') || (p.nom_p[i]>='A' && p.nom_p[i]<='Z')){
+                        continue;
 
-}
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf("caracteres trouver -> %c \n",p.nom_p[i]);
 
-puts("les caracteres speciaux ne sont pas acceptees -> prenom !!!\n");
-while(stricmp(p.prenom_p,"a") < 0 || stricmp(p.prenom_p,"z") > 0 ){
+                }
+            }
+
+//puts("les caracteres speciaux ne sont pas acceptees -> prenom !!!\n");
+
             printf("Prenom\n");
             fgets(p.prenom_p,sizeof(p.prenom_p),stdin);
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';
 
-}
+            for(int i = 0;i<strlen(p.prenom_p);i++){
+                if((p.prenom_p[i]>='a' && p.prenom_p[i]<='z') || (p.prenom_p[i]>='A' && p.prenom_p[i]<='Z')){
+                        continue;
 
-puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
-while(stricmp(p.code_postal_p,"0") < 0 || stricmp(p.code_postal_p,"9") > 0 ){
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf(" caracteres trouver -> %c \n",p.prenom_p[i]);
+
+                }
+            }
+
+//puts("les caracteres speciaux et les lettres ne sont pas acceptees -> code postal!!!\n");
+
             printf("Code postal\n");
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
 
-}
+            for(int i = 0;i<strlen(p.code_postal_p);i++){
+                if((p.code_postal_p[i]>='0' && p.code_postal_p[i]<='9')){
+                        continue;
 
- puts("les caracteres speciaux ne sont pas acceptees -> ville!!!\n");
-while(strcmp(p.ville_p,"a") < 0 || strcmp(p.ville_p,"z") > 0 ){
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf("caracteres trouver -> %c \n",p.code_postal_p[i]);
+
+                }
+            }
+
+//puts("les caracteres speciaux ne sont pas acceptees -> ville!!!\n");
+
             printf("Ville\n");
             fgets(p.ville_p,sizeof(p.ville_p),stdin);
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';
 
 
-}
-puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
-while(strcmp(p.telephone_p,"0") < 0 || strcmp(p.telephone_p,"9") > 0 ){
+            for(int i = 0;i<strlen(p.ville_p);i++){
+                if((p.ville_p[i]>='a' && p.ville_p[i]<='z')|| (p.ville_p[i]>='A' && p.ville_p[i]<='Z')){
+                        continue;
+
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf("caracteres trouver -> %c \n",p.ville_p[i]);
+
+                }
+            }
+//puts("les caracteres speciaux et les lettre ne sont pas acceptees-> telephone !!!\n");
+
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
 
-}
- puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
-while(stricmp(p.mel_p,"a") < 0 || stricmp(p.mel_p,"z") > 0 ){
+            for(int i = 0;i<strlen(p.telephone_p);i++){
+                if((p.telephone_p[i]>='0' && p.telephone_p[i]<='9')){
+                        continue;
+
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf("caracteres trouver -> %c \n",p.telephone_p[i]);
+
+                }
+            }
+//puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
+
             printf("Adresse mail\n");
             fgets( p.mel_p,sizeof(p.mel_p),stdin);
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
+            if(p.mel_p[0]=='\0'){printf("l'adresse mail donne obligatoirment etre renseigner\n");}
+            for(int i = 0;i<strlen(p.mel_p);i++){
+                if((p.mel_p[i]>='a' && p.mel_p[i]<='z')|| (p.mel_p[i]>='A' && p.mel_p[i]<='Z') || p.mel_p[i]=='@' || p.mel_p[i]=='-' || p.mel_p[i]=='.'){
+                        continue;
 
-}
+                }
+                else{
+                    puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                    printf("caracteres trouver -> %c \n",p.mel_p[i]);
+
+                }
+            }
+
             while(!feof(fichier)){
 
                     fscanf(fichier,"%s",chaine2);//cela permet de scanner le fichier
@@ -186,12 +248,23 @@ while(stricmp(p.mel_p,"a") < 0 || stricmp(p.mel_p,"z") > 0 ){
 
 
             fclose(fichier);//je ferme le fichier avec fclose
- puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
-while(stricmp(p.profession_p,"a") < 0 || stricmp(p.profession_p,"z") > 0 ){
-            printf("profession_p\n");
+//puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
+
+            printf("profession\n");
             fgets(p.profession_p,sizeof(p.profession_p),stdin);
             p.profession_p[strcspn(p.profession_p,"\r\n")] = '\0';
-}
+
+            for(int i = 0;i<strlen(p.profession_p);i++){
+            if((p.profession_p[i]>='a' && p.profession_p[i]<='z') || (p.profession_p[i]>='A' && p.profession_p[i]<='Z')){
+                    continue;
+
+            }
+            else{
+                puts("Caracteres speciaux ,chiffre,lettre avec accents,ESPACES detecter!!!\n");
+                printf("caracteres trouver -> %c \n",p.profession_p[i]);
+
+            }
+        }
 
 }
 void Verifier_validite_annuaire(const doublons *d){
@@ -228,8 +301,7 @@ while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n
 
 void tri_client(const doublons *d){
     //fonction de trie a completer en faisant attention aux clients qui n'ont pas renseigné les leur noms
-FILE*fichier;
-fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
+
  int i, j;
 
 doublons r;
