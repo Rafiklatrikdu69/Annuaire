@@ -49,7 +49,7 @@ doublons d;
 printf("/*******************Annuaire Client*******************\n");
 
 //Afficher_annuaire_clients(&r);
-//ajouter_Client(&r);
+ajouter_Client(&r);
 //Verifier_validite_annuaire(&d);
 //Ecriture_annuaire_clients(&r);
 //Separation_mel_p(&r);
