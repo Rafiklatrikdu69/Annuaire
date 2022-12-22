@@ -47,7 +47,8 @@ doublons d;
 int n;
 char c;
 
-printf("/*******************Annuaire Client*******************\n");
+
+
 
 //Afficher_annuaire_clients(&r);
 //ajouter_Client(&r);
@@ -55,10 +56,12 @@ printf("/*******************Annuaire Client*******************\n");
 //Ecriture_annuaire_clients(&r);
 //Separation_mel_p(&r);
 //tri_client(&d);
+
 MENU:{
     printf("1-> ajout Client\n");
     printf("2-> Afficher annuaire Client\n");
-    printf("3-> trier Client par le nom\n");
+    printf("3-> Verifier la validité de l'annuaire\n");
+    printf("4-> trier Client par le nom\n");
 printf("entrer votre choix\n");
 scanf("%d",&n);
 
@@ -70,6 +73,9 @@ case 2:
     Afficher_annuaire_clients(&r);
 break;
 case 3:
+    Verifier_validite_annuaire(&d);
+break;
+case 4:
     tri_client(&d);
 break;
 default :
