@@ -430,10 +430,6 @@ PROFESSION:{
 }
 
 
-
-
-
-
 }
 void Verifier_validite_annuaire(const doublons *d){
 FILE*fichier;
@@ -441,31 +437,48 @@ fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour li
  int i, j;
 
 doublons r;
-r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
- fgetc(stdin);
-while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
-            if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
-                r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
-            }
+r.ligne =0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
+fgetc(stdin);//Pour eviter que quelque ne saute
+r.donnes = (char**) malloc( (sizeof(char*[1000])));
+        if(r.donnes == NULL){
+            printf("erreur allocation");
+        }
+       for(int i=0; i<1000; i++){
 
-}
+            r.donnes[i] = (char*) malloc(sizeof(char*[1000]));
+
+        }
+        while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
+
+                    if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
+                        r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
+                    }
+        }
 
 //utilisation du tri bulle en modifiant quelques parametre,cette fois ci je compare si les chaines sont identiques
-  for (i = 0; i < r.ligne; i++){
-            for (j = i+1; j < r.ligne; j++){
-                      if (stricmp(r.donnes[i], r.donnes[j])== 0)//si les chaines sont identiques alors il y'a des doublons
-                        {
-                          printf("Annuaire invalide Doublons reperer !!");
-                          puts("\n");//puts<->printf
-                          printf("Doublons : %s -> %s",r.donnes[i],r.donnes[j]);//affiche les doublons
-                        }
-            }
-   }
-   fclose(fichier);
+      for (i = 0; i < r.ligne; i++){
+                for (j = i+1; j < r.ligne; j++){
+                          if (stricmp(r.donnes[i], r.donnes[j])== 0)//si les chaines sont identiques alors il y'a des doublons
+                            {
+                              printf("Annuaire invalide Doublons reperer !!");
+                              puts("\n");//puts<->printf
+                              printf("Doublons : %s -> %s",r.donnes[i],r.donnes[j]);//affiche les doublons
+                            }
+                }
+       }
+        fclose(fichier);
 
+       for(int i=0; i<r.ligne; i++){
+
+            free(r.donnes[i]);
+            r.donnes[i] = NULL;
+
+        }
+
+free(r.donnes);
+r.donnes = NULL;
 
 }
-
 
 
 void tri_client(const doublons *d){
@@ -475,36 +488,78 @@ fichier = fopen("fichier.txt","r");//j'ouvre le fichier en mode lecture pour lir
  int i, j;
  fgetc(stdin);
 doublons r;
+r.temp = (char *) malloc (256*sizeof(char));
+
 r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
+r.donnes = (char**) malloc((sizeof(char*[1000])));
+    if(r.donnes == NULL){
+        printf("erreur allocation");
+    }
+   for(int i=0; i<1000; i++){
 
-while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
-            if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
-                r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
-            }
+        r.donnes[i] = (char*) malloc(sizeof(char*[1000]));
 
-}
+    }
 
 
+    while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
+                if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
 
+                  r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
+
+                }
+
+    }
+    /*
+r.donnes = (char**)realloc(r.donnes,r.ligne*sizeof(char));
+for(int i=0; i<r.ligne; i++){
+
+
+        r.donnes[i] = (char*)realloc(r.donnes,r.ligne*sizeof(char));
+
+    }
+*/
 //trie a bulle -> fonctionnement : si l'élement a l'indice i = 0 est supérieur a l'indice i+1 (l'element voisin) alors on permute les elements jusqu'a le tableau soit trié
-   for (i = 0; i < r.ligne; i++){
+  for (i = 0; i < r.ligne; i++){
             for (j = i+1; j < r.ligne; j++){
+
                       if (stricmp(r.donnes[i], r.donnes[j])> 0)//la fonction stricmp permet de comparer des chaines de caracteres en faisant abstraction des majuscules et miniscules
                         {
                             //permutation des valeurs avec strcpy-> librairie->string.h
+
                           strcpy(r.temp,r.donnes[i]);//temp=chaine[i]
                           strcpy(r.donnes[i],r.donnes[j]);//chaine[i]=chaine[j]
                           strcpy(r.donnes[j],r.temp);//chaine[j]=temp
 
+
                         }
+
             }
    }
 
+
+
 //afficher les valeurs ligne par ligne
-        for(i= 0;i<r.ligne;i++){
+    for(int i=0; i<r.ligne; i++){
 
             printf("%s\n",r.donnes[i]);
-        }
+
+    }
+    for(int i=0; i<r.ligne; i++){
+
+        free(r.donnes[i]);
+        r.donnes[i] = NULL;
+
+    }
+free(r.donnes);//libere les donnes
+r.donnes = NULL;
+
+
+
+
+
+
+
 
 fclose(fichier);
 
