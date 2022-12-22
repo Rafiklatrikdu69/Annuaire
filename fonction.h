@@ -32,9 +32,10 @@ void Separation_mel_p( Client *Id_client);
 //déclaration de la structure doublons pour tester la validité de l'annuaire
 struct doublons_{
 
-        char temp[1000];//taille a changer avec l'allocation dynamique...
-        char donnes[1000][1000];//taille a changer avec l'allocation dynamique...
-        unsigned ligne;
+        char *temp;//taille a changer avec l'allocation dynamique...
+        char **donnes;//taille a changer avec l'allocation dynamique...
+        //int ** tableau2d;
+        int ligne;
 
 };
 typedef struct doublons_ doublons;//notation moins lourde
