@@ -45,7 +45,7 @@ int main()
 Client r;
 doublons d;
 int n;
-
+char c;
 
 printf("/*******************Annuaire Client*******************\n");
 
@@ -55,6 +55,10 @@ printf("/*******************Annuaire Client*******************\n");
 //Ecriture_annuaire_clients(&r);
 //Separation_mel_p(&r);
 //tri_client(&d);
+MENU:{
+    printf("1-> ajout Client\n");
+    printf("2-> Afficher annuaire Client\n");
+    printf("3-> trier Client par le nom\n");
 printf("entrer votre choix\n");
 scanf("%d",&n);
 
@@ -62,11 +66,27 @@ switch(n){
 case 1:
     ajouter_Client(&r);
 break;
+case 2:
+    Afficher_annuaire_clients(&r);
+break;
+case 3:
+    tri_client(&d);
+break;
 default :
     printf("erreur");
 
 }
+printf("voulez vous continuer : entrer o ou O\n");
+scanf("%c",&c);
 
+if(c=='o' || c=='O'){
+    goto MENU;
+
+}
+else{
+    exit(1);
+}
+}
 
 
 
