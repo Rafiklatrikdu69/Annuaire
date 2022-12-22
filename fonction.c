@@ -7,6 +7,7 @@
 #define TAILLE 100
 
 void Afficher_annuaire_clients(const Client *Id_client){
+    fgetc(stdin);
  FILE*fichier;
    fichier = fopen("fichier.txt","r");//ouverture du fichier en mode lecture
    char c;
@@ -49,7 +50,7 @@ void Ecriture_annuaire_clients(const Client *Id_client){
     fichier= fopen("Annuaire.csv","r");//ouverture du fichier en mode lecture
     fichier2= fopen("fichier.txt","w");//ouverture du fichier en mode ecriture
     char c;
-
+ fgetc(stdin);
     while(!feof(fichier)){
         c=fgetc(fichier);
 
@@ -70,9 +71,10 @@ FILE*fichier2;
    fichier = fopen("fichier.txt","r");//ouverture du fichier en mode lecture
    fichier2 = fopen("fichier2.txt","w");//ouverture du fichier en mode écriture
    char c;
+
    char ch;
    int i = 0;
-
+ fgetc(stdin);
 
     while(!feof(fichier)){
         c=fgetc(fichier);
@@ -124,17 +126,18 @@ fichier2 = fopen("fichier.txt","a");//ouverture du fichier en lecture pour lire 
 //char chaine[100];//taille a changer avec l'allocation dynamique...
 char *temp = (char *) malloc (50*sizeof(char));//j'alloue une taille de 50 octets etant donnes qu'un char = 1 octet
 char *chaine2 = (char *) malloc (50*sizeof(char));
-p.nom_p = (char *) malloc (100*sizeof(char));
-p.prenom_p = (char *) malloc (100*sizeof(char));
-p.ville_p = (char *) malloc (100*sizeof(char));
-p.mel_p = (char *) malloc (100*sizeof(char));
-p.profession_p = (char *) malloc (100*sizeof(char));
+
+
+
+
+
 //p.nom_p =   (char *) malloc (1*sizeof(char));
 //char caracteres_incompatible[100] =";,%'`~&:}{^¤$<>@àéè[]_-+/*¨#!?²123456789";
    printf("La premiere lettre doit etre en majuscule ! \n");
 //Probleme avec fgets -> le menu fait sautr ma saisie du nom alors que avec un scanf rien ne saute fgets(p.nom_p,TAILLE,stdin);
 fgetc(stdin);//pour empecher que le fgets sur le nom saute
 NOM:{
+    p.nom_p = (char *) malloc (100*sizeof(char));
 
             printf("Nom\n");
             fgets(p.nom_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
@@ -146,7 +149,7 @@ NOM:{
 
             }
             else{
-                fprintf(fichier2,"%s,",p.nom_p);
+                fprintf(fichier2,",",p.nom_p);
                 goto PRENOM;
             }
 
@@ -174,6 +177,7 @@ NOM:{
 
 //puts("les caracteres speciaux ne sont pas acceptees -> prenom !!!\n");
 PRENOM:{
+    p.prenom_p = (char *) malloc (100*sizeof(char));
             printf("Prenom\n");
             fgets(p.prenom_p,TAILLE,stdin);
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';
@@ -181,7 +185,7 @@ PRENOM:{
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
-                fprintf(fichier2,"%s,",p.prenom_p);
+                fprintf(fichier2,",",p.prenom_p);
                 goto CODEPOSTAL;
             }
 
@@ -205,7 +209,10 @@ CODEPOSTAL:{
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
             if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
-
+            else{
+                  fprintf(fichier2,",",p.code_postal_p);
+                goto VIL;
+            }
             for(int i = 0;i<strlen(p.code_postal_p);i++){
                 if((p.code_postal_p[i]>='0' && p.code_postal_p[i]<='9')){
                         continue;
@@ -221,6 +228,7 @@ CODEPOSTAL:{
 }
 
 VIL:{
+    p.ville_p = (char *) malloc (100*sizeof(char));
             printf("Ville\n");
             fgets(p.ville_p,TAILLE,stdin);
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';
@@ -228,7 +236,7 @@ VIL:{
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
-                    fprintf(fichier2,"%s,",p.ville_p);
+                    fprintf(fichier2,"%,",p.ville_p);
                 goto TELEPHONE;
             }
 
@@ -252,7 +260,10 @@ TELEPHONE:{
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
-
+            if(p.telephone_p[0]=='\0'){fprintf(fichier2,",",p.telephone_p);goto MEL;}
+            else{
+               assert(strlen(p.telephone_p) == 10);
+            }
 
             for(int i = 0;i<strlen(p.telephone_p);i++){
                 if((p.telephone_p[i]>='0' && p.telephone_p[i]<='9')){
@@ -266,6 +277,10 @@ TELEPHONE:{
                 }
             }
             for(int i = 0;i<strlen(p.telephone_p);i++){
+                    if(i==8){
+                        fprintf(fichier2,"%c%c,",p.telephone_p[i],p.telephone_p[i+1]);
+                        goto MEL;
+                    }
                 fprintf(fichier2,"%c%c.",p.telephone_p[i],p.telephone_p[i+1]);
                 i++;
             }
@@ -273,6 +288,7 @@ TELEPHONE:{
 }
 //puts("les caracteres speciaux ne sont pas acceptees-> adresse mail !!!\n");
 MEL:{
+    p.mel_p = (char *) malloc (100*sizeof(char));
             printf("Adresse mail\n");
             fgets( p.mel_p,TAILLE,stdin);
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
@@ -383,6 +399,7 @@ fprintf(fichier2,"%s,",p.mel_p);
 }
 //puts("les caracteres speciaux ne sont pas acceptees -> profession!!!\n");
 PROFESSION:{
+    p.profession_p = (char *) malloc (100*sizeof(char));
             printf("profession\n");
             fgets(p.profession_p,TAILLE,stdin);
             p.profession_p[strcspn(p.profession_p,"\r\n")] = '\0';
@@ -391,8 +408,8 @@ PROFESSION:{
                    p.profession_p = (char*)realloc(p.profession_p,strlen(p.profession_p)*sizeof(char));
                     }
                     else{
-                            fprintf(fichier2,"%s,",p.profession_p);
-                            exit(1);
+                            //fprintf(fichier2,"",p.profession_p);
+                            //exit(1);
                     }
             for(int i = 0;i<strlen(p.profession_p);i++){
             if((p.profession_p[i]>='a' && p.profession_p[i]<='z') || (p.profession_p[i]>='A' && p.profession_p[i]<='Z')|| p.profession_p[i]=='-'){
@@ -405,10 +422,11 @@ PROFESSION:{
                 goto PROFESSION;
             }
         }
-        goto V;
+
         fprintf(fichier2,"%s\n",p.profession_p);
-        fclose(fichier2);
+
         free(p.profession_p);
+        fclose(fichier2);
 }
 
 
@@ -424,7 +442,7 @@ fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour li
 
 doublons r;
 r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
-
+ fgetc(stdin);
 while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
             if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
                 r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
@@ -453,9 +471,9 @@ while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n
 void tri_client(const doublons *d){
     //fonction de trie a completer en faisant attention aux clients qui n'ont pas renseigné les leur noms
 FILE*fichier;
-fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
+fichier = fopen("fichier.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
  int i, j;
-
+ fgetc(stdin);
 doublons r;
 r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
 
@@ -466,9 +484,6 @@ while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n
 
 }
 
-V:{
-    printf("fini");
-}
 
 
 //trie a bulle -> fonctionnement : si l'élement a l'indice i = 0 est supérieur a l'indice i+1 (l'element voisin) alors on permute les elements jusqu'a le tableau soit trié
