@@ -13,20 +13,28 @@ void Afficher_annuaire_clients(const Client *Id_client){
    char c;
    char ch;
    int i = 0;
-
+int cpt = 0;
    while(!feof(fichier)){
 
         for(i = 0;i!='\n';i++){
         c =fgetc(fichier);
+
                     if (c == ','){
-                            printf("\n\n");
-                            printf("-----------------------");
+
+
+                            printf("\n\t");
+                            printf("------");
                             ch=fgetc(fichier);
                             fseek(fichier,1,SEEK_CUR);
-                            if(ch == ','){
+                            if(ch==' '){
+                                    cpt++;
+                            }
+                            if(ch == ',' || ch =='\n' || cpt ==1){
+                                    printf("donnes");
                                      ch=fgetc(fichier);
                                 fseek(fichier,-1,SEEK_CUR);
                             fseek(fichier,-2,SEEK_CUR);
+                            cpt = 0;
                             break;
                             }
                             fseek(fichier,-2,SEEK_CUR);
@@ -149,7 +157,7 @@ NOM:{
 
             }
             else{
-                fprintf(fichier2,",",p.nom_p);
+                fprintf(fichier2,",");
                 goto PRENOM;
             }
 
@@ -185,7 +193,7 @@ PRENOM:{
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
-                fprintf(fichier2,",",p.prenom_p);
+                fprintf(fichier2,",");
                 goto CODEPOSTAL;
             }
 
@@ -210,7 +218,7 @@ CODEPOSTAL:{
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
             if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
             else{
-                  fprintf(fichier2,",",p.code_postal_p);
+                  fprintf(fichier2,",");
                 goto VIL;
             }
             for(int i = 0;i<strlen(p.code_postal_p);i++){
@@ -236,7 +244,7 @@ VIL:{
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
-                    fprintf(fichier2,"%,",p.ville_p);
+                    fprintf(fichier2,"%,");
                 goto TELEPHONE;
             }
 
@@ -260,7 +268,7 @@ TELEPHONE:{
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
-            if(p.telephone_p[0]=='\0'){fprintf(fichier2,",",p.telephone_p);goto MEL;}
+            if(p.telephone_p[0]=='\0'){fprintf(fichier2,",");goto MEL;}
             else{
                assert(strlen(p.telephone_p) == 10);
             }
