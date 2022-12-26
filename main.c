@@ -37,16 +37,18 @@ char *c = (char*)malloc(15*sizeof(char));
 
 int main()
 {
+
 //double *p = (double*)malloc(10*sizeof(double));//80 octets
 //char *c = (char*)malloc(15*sizeof(char));//15 octets
 //calloc : initialise tout a 0 voir -> cppreference
 
 
 Client r;
-doublons d;
+//doublons d;
 int n;
 char c;
 
+struct personne_ p;
 
 
 
@@ -75,12 +77,12 @@ case 2:
     Afficher_annuaire_clients(&r);
 break;
 case 3:
-    Separation_mel_p(&r);
-    Verifier_validite_annuaire(&d);
+    Ecriture_annuaire_clients(&r);
+    Verifier_validite_annuaire(&p,700);
 break;
 case 4:
 
-    //tri_client(&d);
+    client(&p,1);
 break;
 case 5:
     Ecriture_annuaire_clients(&r);
@@ -102,29 +104,11 @@ if(c=='o' || c=='O'){
 else{
     exit(1);
 }
-{/*
- FILE *fichier = fopen("fichier.txt", "r");
-  if (fichier == NULL) {
-    perror("Erreur lors de l'ouverture du fichier");
-    return 1;
-  }
 
-  // Lisez les données du fichier et stockez-les dans un tableau de structures
-  struct personne_ personnes[3];
-  for (int i = 0; i < 3; i++) {
-    fscanf(fichier, "%s,%s,%s,%s,%s,%s,%s\n", personnes[i].nom,  personnes[i].prenom,   personnes[i].code ,   personnes[i].ville,   personnes[i].tel,  personnes[i].adresse,personnes[i].prof);
-  }
 
-  // Fermez le fichier
-  fclose(fichier);
 
-  // Triez le tableau de structures en fonction du nom avec l'algorithme de tri à bulle
-  tri_client(personnes);
-for (int i = 0; i < 3; i++) {
-   printf("%s %s %s %s %s %s %s\n",personnes[i].nom,  personnes[i].prenom,   personnes[i].code ,   personnes[i].ville,   personnes[i].tel,  personnes[i].adresse,personnes[i].prof);
-  }
   // Ouvrez le fichier
-*/
+
 /*
 int j = 0;
 int i = 0;
@@ -163,14 +147,11 @@ else{
 
 */
 
-}
-
-
-
 
  return 0;
 }
 }
+//}
 
 
 
