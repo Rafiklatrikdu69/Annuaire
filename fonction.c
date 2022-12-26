@@ -17,13 +17,13 @@ void Afficher_annuaire_clients(const Client *Id_client){
     fgetc(stdin);
  FILE*fichier;
  FILE*fp;
-   fichier = fopen("fichier.txt","r");//ouverture du fichier en mode lecture
+   fichier = fopen("annuaire.csv","r");//ouverture du fichier en mode lecture
    fp = fopen("fichier3.txt","w");
    char c;
    char ch;
    int i = 0;
 int cpt = 0;
-char nom[256];
+
    while(!feof(fichier)){
 
 
@@ -47,7 +47,7 @@ char nom[256];
                             if(ch == ',' || ch =='\n' || cpt ==1){
                                     //printf("donnes");
                                     //fprintf(fp," donnes ");
-                                    fprintf(fp,"|");
+                                    fprintf(fp," ");
                                      ch=fgetc(fichier);
                                 fseek(fichier,-1,SEEK_CUR);
                             fseek(fichier,-2,SEEK_CUR);
@@ -81,78 +81,68 @@ fclose(fp);
 
 void Ecriture_annuaire_clients(const Client *Id_client){
 
-    FILE*fichier;
-    FILE*fichier2;
-    fichier= fopen("Annuaire.csv","r");//ouverture du fichier en mode lecture
-    fichier2= fopen("fichier.txt","w");//ouverture du fichier en mode ecriture
-    char c;
- fgetc(stdin);
-    while(!feof(fichier)){
-        c=fgetc(fichier);
+    fgetc(stdin);
+ FILE*fichier;
+ FILE*fp;
+ char fic[256];
+   fichier = fopen("annuaire.csv","r");//ouverture du fichier en mode lecture
 
-        fprintf(fichier2,"%c",c);//copie des caracteres un par un dans un fichier texte
-    }
-
-    fclose(fichier);//ferme le fichier
-    fclose(fichier2);//ferme le fichier
-
-}
-
-
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
-void Separation_mel_p( Client *Id_client){
-//cette fonction permet de séparer les emails dans un fichier a part pour par la suite verifier si la chaine mel_p est présente
-FILE*fichier;
-FILE*fichier2;
-   fichier = fopen("fichier.txt","r");//ouverture du fichier en mode lecture
-   fichier2 = fopen("fichier2.txt","w");//ouverture du fichier en mode écriture
+   fp = fopen("fichier.txt","w");
    char c;
-
    char ch;
    int i = 0;
- fgetc(stdin);
+int cpt = 0;
 
-    while(!feof(fichier)){
-        c=fgetc(fichier);
+   while(!feof(fichier)){
 
-        if(c==','){
-            i++;//j'initialise le compteur pour compter les nombre de virgule
 
+        for(i = 0;i!='\n';i++){
+
+        c =fgetc(fichier);
+
+
+                    if (c == ','){
+
+
+
+
+                            fprintf(fp,",");
+                            ch=fgetc(fichier);
+                            fseek(fichier,1,SEEK_CUR);
+                                if(ch == ' ' || ch == '  ' || ch == '\t'){
+                                    cpt++;
+                                }
+                            if(ch == ',' || ch =='\n' || cpt ==1){
+                                    //printf("donnes");
+                                    //fprintf(fp," donnes ");
+                                    fprintf(fp," ");
+                                     ch=fgetc(fichier);
+                                fseek(fichier,-1,SEEK_CUR);
+                            fseek(fichier,-2,SEEK_CUR);
+
+                                cpt = 0;
+                            break;
+                            }
+                            fseek(fichier,-2,SEEK_CUR);
+                    }
+                    else
+                    {
+
+                            fprintf(fp,"%c",c);
+                    }
         }
-        if(i==5){
-            //printf("l'element %d qui suit est email\n",i);
-            ch =fgetc(fichier);
-            fseek(fichier,-1,SEEK_CUR);//deplace le cursor de 1 pour verifier si le caractere est une virgule
-            if(ch==','){
-                i=0;
-                fseek(fichier,1,SEEK_CUR);
-                printf("\n");
-                fprintf(fichier2,"\n");//j'ecris le caractere "retour a la ligne"
-            }
-            else {
-                printf("%c",ch);
-                fprintf(fichier2,"%c",ch);//j'ecris le caractere  dans le fichier
-            }
+        //fprintf(fp,",");
+   }
 
-            //i=0;
+   fclose(fichier);//ferme le fichier
 
-
-        }
-
-
-    }
-    fclose(fichier);
-    fclose(fichier2);
+fclose(fp);
 
 
 }
+
+
+
 
 
 
@@ -220,7 +210,7 @@ NOM:{
 
                 }
             }
-            fprintf(fichier2,"\t,",p.nom_p);
+            fprintf(fichier2,"%s,",p.nom_p);
 
 }
 
@@ -405,6 +395,7 @@ MEL:{
                          printf("Le nombre d’occurrence de @ est %d\n", c.occurrence1);
                          printf("Le nombre d’occurrence de . est %d\n", c.occurrence2);
 int cpt = 0;
+/** utiliser la fonction tri_client pour verifier si l'adresse est deja presente**/
             while(!feof(fichier)){
 
                     fscanf(fichier,"%s",chaine2);//cela permet de scanner le fichier
@@ -489,54 +480,7 @@ PROFESSION:{
  *
  */
 
-void Verifier_validite_annuaire(const doublons *d){
-FILE*fichier;
-fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
- int i, j;
 
-doublons r;
-r.ligne =0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
-fgetc(stdin);//Pour eviter que quelque ne saute
-r.donnes = (char**) malloc( (sizeof(char*[1000])));
-        if(r.donnes == NULL){
-            printf("erreur allocation");
-        }
-       for(int i=0; i<1000; i++){
-
-            r.donnes[i] = (char*) malloc(sizeof(char*[1000]));
-
-        }
-        while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
-
-                    if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
-                        r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
-                    }
-        }
-
-//utilisation du tri bulle en modifiant quelques parametre,cette fois ci je compare si les chaines sont identiques
-      for (i = 0; i < r.ligne; i++){
-                for (j = i+1; j < r.ligne; j++){
-                          if (stricmp(r.donnes[i], r.donnes[j])== 0)//si les chaines sont identiques alors il y'a des doublons
-                            {
-                              printf("Annuaire invalide Doublons reperer !!");
-                              puts("\n");//puts<->printf
-                              printf("Doublons : %s -> %s",r.donnes[i],r.donnes[j]);//affiche les doublons
-                            }
-                }
-       }
-        fclose(fichier);
-
-       for(int i=0; i<r.ligne; i++){
-
-            free(r.donnes[i]);
-            r.donnes[i] = NULL;
-
-        }
-
-free(r.donnes);
-r.donnes = NULL;
-
-}
 
 /** \brief
  *
@@ -545,29 +489,112 @@ r.donnes = NULL;
  * \return
  *
  */
-
-void tri_client(struct personne_ personne[]){
+void doublons( struct personne_ personne[],int size){
   int i, j;
-  struct personne_ temp;
-  for (i = 0; i < 3 - 1; i++) {
-    for (j = 0; j < 3 - i - 1; j++) {
-      if (stricmp(personne[j].nom, personne[j + 1].nom) > 0) {
-        temp = personne[j];
-        personne[j] = personne[j + 1];
-        personne[j + 1] = temp;
+
+  for (i = 0; i < size ; i++) {
+    for (j = i+1; j < size ; j++) {
+      if (stricmp(personne[i].adresse, personne[j].adresse) == 0) {
+            printf("il ya des doublons !\n");
+            printf("%s et %s \n",personne[i].adresse,personne[j].adresse);
+            break;
+
       }
     }
   }
 
+
+
+}
+void Verifier_validite_annuaire(struct personne_ personne[],int size){
+
+FILE *fichier = fopen("fichier.txt", "r");
+  if (fichier == NULL) {
+    perror("Erreur lors de l'ouverture du fichier");
+    exit(1);
+  }
+  int  cpt = 0;
+
+  // Lisez les données du fichier et stockez-les dans un tableau de structures
+  //struct personne_ personnes[700];
+  struct personne_ *p = (struct personne_*)malloc(1000*sizeof(struct personne_));
+
+        while(!feof(fichier)){
+    fscanf(fichier, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", p[cpt].nom,  p[cpt].prenom,   p[cpt].code ,   p[cpt].ville,   p[cpt].tel,  p[cpt].adresse,p[cpt].prof);
+
+    cpt++;
+    }
+
+  // Fermez le fichier
+
+ fclose(fichier);
+  // Triez le tableau de structures en fonction du nom avec l'algorithme de tri à bulle
+  doublons(p,cpt);
+
+
+free(p);
+
+
+
+}
+void tri_bulle( struct personne_ personne[],int size){
+  int i, j;
+  struct personne_ temp;
+  for (i = 0; i < size; i++) {
+    for (j = i+1 ;j < size; j++) {
+      if (stricmp(personne[i].nom, personne[j].nom) > 0) {
+        temp = personne[i];
+        personne[i] = personne[j];
+        personne[j] = temp;
+      }
+    }
+  }
+
+
+
 }
 
+void client( const struct personne_ personne[],int size){
+
+
+FILE *fichier = fopen("fichier.txt", "r");
+  if (fichier == NULL) {
+    perror("Erreur lors de l'ouverture du fichier");
+    exit(1);
+  }
+  int  cpt =0;
+
+  // Lisez les données du fichier et stockez-les dans un tableau de structures
+  //struct personne_ personnes[700];
+  struct personne_ *p = (struct personne_*)malloc(1000*sizeof(struct personne_));
+
+        while(!feof(fichier)){
+    fscanf(fichier, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", p[cpt].nom,  p[cpt].prenom,   p[cpt].code ,   p[cpt].ville,   p[cpt].tel,  p[cpt].adresse,p[cpt].prof);
+
+    cpt++;
+    }
+
+  // Fermez le fichier
+
+
+  // Triez le tableau de structures en fonction du nom avec l'algorithme de tri à bulle
+  tri_bulle(p,cpt);
+  fclose(fichier);
+for (int i = 0; i < cpt; i++) {
+   printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom,  p[i].prenom,   p[i].code ,   p[i].ville,   p[i].tel,  p[i].adresse,p[i].prof);
+  }
+
+
+ free(p);
+
+}
 
 
 void Filtrer_combiner_deux_champs(const Client *Id_client){
 FILE*fichier;
 fichier = fopen("fichier3.txt","r");
 Client f;
-doublons r;
+//doublons r;
 char *token;
 char *token2;
 char *token3;
