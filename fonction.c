@@ -5,36 +5,54 @@
 #include<assert.h>
 #include "fonction.h"
 #define TAILLE 100
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 void Afficher_annuaire_clients(const Client *Id_client){
     fgetc(stdin);
  FILE*fichier;
+ FILE*fp;
    fichier = fopen("fichier.txt","r");//ouverture du fichier en mode lecture
+   fp = fopen("fichier3.txt","w");
    char c;
    char ch;
    int i = 0;
 int cpt = 0;
+char nom[256];
    while(!feof(fichier)){
 
+
         for(i = 0;i!='\n';i++){
+
         c =fgetc(fichier);
+
 
                     if (c == ','){
 
 
+
                             printf("\n\t");
                             printf("------");
+                            fprintf(fp,",");
                             ch=fgetc(fichier);
                             fseek(fichier,1,SEEK_CUR);
-                            if(ch==' '){
+                                if(ch == ' ' || ch == '  ' || ch == '\t'){
                                     cpt++;
-                            }
+                                }
                             if(ch == ',' || ch =='\n' || cpt ==1){
-                                    printf("donnes");
+                                    //printf("donnes");
+                                    //fprintf(fp," donnes ");
+                                    fprintf(fp,"|");
                                      ch=fgetc(fichier);
                                 fseek(fichier,-1,SEEK_CUR);
                             fseek(fichier,-2,SEEK_CUR);
-                            cpt = 0;
+
+                                cpt = 0;
                             break;
                             }
                             fseek(fichier,-2,SEEK_CUR);
@@ -42,14 +60,24 @@ int cpt = 0;
                     else
                     {
                             printf("%c",c);
+                            fprintf(fp,"%c",c);
                     }
         }
+        //fprintf(fp,",");
    }
 
    fclose(fichier);//ferme le fichier
 
+fclose(fp);
 
 }
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 void Ecriture_annuaire_clients(const Client *Id_client){
 
@@ -71,6 +99,13 @@ void Ecriture_annuaire_clients(const Client *Id_client){
 }
 
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 void Separation_mel_p( Client *Id_client){
 //cette fonction permet de séparer les emails dans un fichier a part pour par la suite verifier si la chaine mel_p est présente
@@ -121,6 +156,13 @@ FILE*fichier2;
 
 
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
 void ajouter_Client(  const Client *Id_client){
 //cette fonction compare mel_p donner en entrée et verifier si elle est deja présente dans le fichier
@@ -157,14 +199,14 @@ NOM:{
 
             }
             else{
-                fprintf(fichier2,",");
+                fprintf(fichier2,"\t,");
                 goto PRENOM;
             }
 
             //apres que l'utilisateur entre ses coordonees je detecte avec une boucle si chaque caracteres et compris entre a et z ou A et Z en se basant sur le code ascii
              // je detecte les erreurs possibles lors de la saisie du numero de telephone ou du code postale
             for(int i = 0;i<strlen(p.nom_p);i++){
-                if((p.nom_p[i]>='a' && p.nom_p[i]<='z') || (p.nom_p[i]>='A' && p.nom_p[i]<='Z') || p.nom_p[i]=='-'){
+                if((p.nom_p[i]>='a' && p.nom_p[i]<='z') || (p.nom_p[i]>='A' && p.nom_p[i]<='Z') || p.nom_p[i]=='-' ||  p.nom_p[0]!=' '){
 
                         continue;
 
@@ -178,7 +220,7 @@ NOM:{
 
                 }
             }
-            fprintf(fichier2,"%s,",p.nom_p);
+            fprintf(fichier2,"\t,",p.nom_p);
 
 }
 
@@ -193,7 +235,7 @@ PRENOM:{
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
-                fprintf(fichier2,",");
+                fprintf(fichier2,"\t,");
                 goto CODEPOSTAL;
             }
 
@@ -216,9 +258,9 @@ CODEPOSTAL:{
             printf("Code postal\n");
             fgets(p.code_postal_p,sizeof(p.code_postal_p),stdin);
             p.code_postal_p[strcspn(p.code_postal_p,"\r\n")] = '\0';
-            if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5);}
+            if(p.code_postal_p[0]!='\0'){assert(strlen(p.code_postal_p) == 5 || strlen(p.code_postal_p) == 4);}
             else{
-                  fprintf(fichier2,",");
+                  fprintf(fichier2,"\t,");
                 goto VIL;
             }
             for(int i = 0;i<strlen(p.code_postal_p);i++){
@@ -244,7 +286,7 @@ VIL:{
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
-                    fprintf(fichier2,"%,");
+                    fprintf(fichier2,"\t,");
                 goto TELEPHONE;
             }
 
@@ -268,7 +310,7 @@ TELEPHONE:{
             printf("Numero de telephone\n");
             fgets(p.telephone_p,sizeof(p.telephone_p),stdin);
             p.telephone_p[strcspn(p.telephone_p,"\r\n")] = '\0';//si la chaine depasse la taille alors le dernier caractere sera un \0
-            if(p.telephone_p[0]=='\0'){fprintf(fichier2,",");goto MEL;}
+            if(p.telephone_p[0]=='\0'){fprintf(fichier2,"\t,");goto MEL;}
             else{
                assert(strlen(p.telephone_p) == 10);
             }
@@ -416,7 +458,7 @@ PROFESSION:{
                    p.profession_p = (char*)realloc(p.profession_p,strlen(p.profession_p)*sizeof(char));
                     }
                     else{
-                            //fprintf(fichier2,"",p.profession_p);
+                            fprintf(fichier2,"\t");
                             //exit(1);
                     }
             for(int i = 0;i<strlen(p.profession_p);i++){
@@ -439,6 +481,14 @@ PROFESSION:{
 
 
 }
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
+
 void Verifier_validite_annuaire(const doublons *d){
 FILE*fichier;
 fichier = fopen("fichier2.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
@@ -488,87 +538,71 @@ r.donnes = NULL;
 
 }
 
+/** \brief
+ *
+ * \param
+ * \param
+ * \return
+ *
+ */
 
-void tri_client(const doublons *d){
-    //fonction de trie a completer en faisant attention aux clients qui n'ont pas renseigné les leur noms
+void tri_client(struct personne_ personne[]){
+  int i, j;
+  struct personne_ temp;
+  for (i = 0; i < 3 - 1; i++) {
+    for (j = 0; j < 3 - i - 1; j++) {
+      if (stricmp(personne[j].nom, personne[j + 1].nom) > 0) {
+        temp = personne[j];
+        personne[j] = personne[j + 1];
+        personne[j + 1] = temp;
+      }
+    }
+  }
+
+}
+
+
+
+void Filtrer_combiner_deux_champs(const Client *Id_client){
 FILE*fichier;
-fichier = fopen("fichier.txt","r");//j'ouvre le fichier en mode lecture pour lire le fichier-> r =read
- int i, j;
- fgetc(stdin);
+fichier = fopen("fichier3.txt","r");
+Client f;
 doublons r;
-r.temp = (char *) malloc (256*sizeof(char));
+char *token;
+char *token2;
+char *token3;
+char *token4;
+char *token5;
+const char s[4] = "|\t";
+f.nom_p = (char *) malloc (100*sizeof(char));
+f.prenom_p = (char *) malloc (100*sizeof(char));
+f.ville_p = (char *) malloc (100*sizeof(char));
+f.mel_p = (char *) malloc (100*sizeof(char));
+f.profession_p = (char *) malloc (100*sizeof(char));
+printf("%-25s %-25s %-20s %-25s %-25s% -50s %-20s\n","   NOM","   PRENOM","   CODE POSTALE","   VILLE","   TELEPHONE","   MAIL","   PROFESSION");
+while(!feof(fichier)){
 
-r.ligne = 0;//initialisation du nombre de ligne a 0 a l'aide de la structure doublons -> voir fichier "fonction.h"
-r.donnes = (char**) malloc((sizeof(char*[1000])));
-    if(r.donnes == NULL){
-        printf("erreur allocation");
-    }
-   for(int i=0; i<1000; i++){
+/*
+for(int i = 0 ;i<200;i++){
+    printf("-");
+}
+printf("\n");
+fscanf(fichier,"%[^,],",f.nom_p);
+fscanf(fichier,"%[^,],",f.prenom_p);
+token = strtok(f.prenom_p, s);
+fscanf(fichier,"%[^,],",f.code_postal_p);
+token2 = strtok(f.code_postal_p, s);
+fscanf(fichier,"%[^,],",f.ville_p);
+token3 = strtok(f.ville_p, s);
+fscanf(fichier,"%[^,],",f.telephone_p);
+token4 = strtok(f.telephone_p, s);
+fscanf(fichier,"%[^,],",f.mel_p);
+fscanf(fichier,"%[^\n]",f.profession_p);
+token5 = strtok(f.profession_p, s);
 
-        r.donnes[i] = (char*) malloc(sizeof(char*[1000]));
-
-    }
-
-
-    while(!feof(fichier)&& !ferror(fichier)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
-                if(fgets(r.donnes[r.ligne],1000,fichier)!= NULL){//lire une chaine de caractere
-
-                  r.ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
-
-                }
-
-    }
-    /*
-r.donnes = (char**)realloc(r.donnes,r.ligne*sizeof(char));
-for(int i=0; i<r.ligne; i++){
-
-
-        r.donnes[i] = (char*)realloc(r.donnes,r.ligne*sizeof(char));
-
-    }
+printf("%-25s |%-25s |%-20s |%-25s |%-25s |% -50s |%-20s\n",f.nom_p,token,token2,token3,token4,f.mel_p,token5);
 */
-//trie a bulle -> fonctionnement : si l'élement a l'indice i = 0 est supérieur a l'indice i+1 (l'element voisin) alors on permute les elements jusqu'a le tableau soit trié
-  for (i = 0; i < r.ligne; i++){
-            for (j = i+1; j < r.ligne; j++){
-
-                      if (stricmp(r.donnes[i], r.donnes[j])> 0)//la fonction stricmp permet de comparer des chaines de caracteres en faisant abstraction des majuscules et miniscules
-                        {
-                            //permutation des valeurs avec strcpy-> librairie->string.h
-
-                          strcpy(r.temp,r.donnes[i]);//temp=chaine[i]
-                          strcpy(r.donnes[i],r.donnes[j]);//chaine[i]=chaine[j]
-                          strcpy(r.donnes[j],r.temp);//chaine[j]=temp
-
-
-                        }
-
-            }
-   }
-
-
-
-//afficher les valeurs ligne par ligne
-    for(int i=0; i<r.ligne; i++){
-
-            printf("%s\n",r.donnes[i]);
-
-    }
-    for(int i=0; i<r.ligne; i++){
-
-        free(r.donnes[i]);
-        r.donnes[i] = NULL;
-
-    }
-free(r.donnes);//libere les donnes
-r.donnes = NULL;
-
-
-
-
-
-
-
-
+}
 fclose(fichier);
 
 }
