@@ -26,7 +26,7 @@ void ajouter_Client(  const Client *Id_client);
 void Afficher_annuaire_clients(const Client *Id_client);
 void Ecriture_annuaire_clients(const Client *Id_client);
 void Separation_mel_p( Client *Id_client);
-
+void Filtrer_combiner_deux_champs(const Client *Id_client);
 
 
 //déclaration de la structure doublons pour tester la validité de l'annuaire
@@ -39,7 +39,6 @@ struct doublons_{
 
 };
 typedef struct doublons_ doublons;//notation moins lourde
-void tri_client(const doublons *d);
 void Verifier_validite_annuaire(const doublons *d);
 
 
@@ -52,3 +51,20 @@ struct occurence_{
 
 };
 typedef struct occurence_ occurence;
+
+
+
+struct personne_ {
+  char nom[50];
+  char prenom [50];
+  char code[50];
+  char ville [50];
+    char tel[50];
+  char adresse [50];
+    char prof[50];
+
+
+  // d'autres champs de données pour chaque personne
+};
+typedef struct personne_  personne;
+void tri_client(struct personne_ personne[]);
