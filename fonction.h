@@ -13,6 +13,7 @@
 //declaration de la structure client
 #pragma once//programmation modulaire
 #define SIZE 20
+
 struct Client_{
 
         char *nom_p;
@@ -29,14 +30,15 @@ struct Client_{
 
 };
 typedef struct Client_ Client;//notation moins lourde
-void ajouter_Client(  const Client *Id_client);
+
+void ajouter_Client(  const Client *Id_client,const char *annuaireCSV);
 void Afficher_annuaire_clients(const Client *Id_client);
 void Ecriture_annuaire_clients(const Client *Id_client);
-void Filtrer_combiner_deux_champs(const Client *Id_client);
+void Filtrer_combiner_deux_champs(const Client *Id_client,const char *annuaireCSV);
 int Filtrer(char *s1,char *sch1,char *s2,char *sch2,int index,int index2,int cpt);
-void tri_client_par_nom( const Client*d,int size);
+void tri_client_par_nom( const Client*d,int size,const char *annuaireCSV);
 void Verifier_validite_annuaire(const Client*d,int size);
-int sous_chaine(const char *s_ch, const char *ch);
+void Rendre_annuaire_valide(const Client *Id_client);
 
 struct occurence_{
 
