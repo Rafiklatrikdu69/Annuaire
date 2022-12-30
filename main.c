@@ -37,27 +37,21 @@ char *c = (char*)malloc(15*sizeof(char));
 
 int main()
 {
+    Client d;
+
+    //ajouter_Client(&d);
+    //Verifier_validite_annuaire(&d,1);
+
 
 //double *p = (double*)malloc(10*sizeof(double));//80 octets
 //char *c = (char*)malloc(15*sizeof(char));//15 octets
 //calloc : initialise tout a 0 voir -> cppreference
 
-
-Client r;
 //doublons d;
 int n;
 char c;
 
-struct personne_ p;
 
-
-
-//Afficher_annuaire_clients(&r);
-//ajouter_Client(&r);
-//Verifier_validite_annuaire(&d);
-//Ecriture_annuaire_clients(&r);
-//Separation_mel_p(&r);
-//tri_client(&d);
 
 MENU:{
     printf("1-> ajout Client\n");
@@ -71,24 +65,23 @@ scanf("%d",&n);
 
 switch(n){
 case 1:
-    ajouter_Client(&r);
+   Ecriture_annuaire_clients(&d);
+    ajouter_Client(&d);
 break;
 case 2:
-    Afficher_annuaire_clients(&r);
+  Afficher_annuaire_clients(&d);
 break;
 case 3:
-    Ecriture_annuaire_clients(&r);
-    Verifier_validite_annuaire(&p,700);
+    Ecriture_annuaire_clients(&d);
+    Verifier_validite_annuaire(&d,700);
 break;
 case 4:
-
-    client(&p,1);
+    Ecriture_annuaire_clients(&d);
+    tri_client_par_nom(&d,1);
 break;
 case 5:
-    Ecriture_annuaire_clients(&r);
-break;
-case 6:
-    Filtrer_combiner_deux_champs(&r);
+   Ecriture_annuaire_clients(&d);
+  Filtrer_combiner_deux_champs(&d);
 break;
 default :
     printf("erreur");
@@ -105,53 +98,10 @@ else{
     exit(1);
 }
 
-
-
-  // Ouvrez le fichier
-
-/*
-int j = 0;
-int i = 0;
-char chaine[] = "Leroy";
-char c[256];
-int res = 0;
-printf("entrez l'indice");
-scanf("%d",&n);
-
-printf("entrez le filtre : ");
-scanf("%s",&c);
-
-for( i = 0;i<strlen(c);i++){
-
-if(chaine[n] == c[j]){
-res = 1;
-//printf("filtre  = %s\n",chaine);
-j++;
-n++;
-}
-else{
-    res = 0;
-    break;
-}
-
-}
-
-if(res==1){
-    printf("filtre  = %s\n",chaine);
-}
-else{
-      printf("chaine  inexistante\n");
-}
-
-
-
-*/
-
-
  return 0;
 }
 }
-//}
+
 
 
 
