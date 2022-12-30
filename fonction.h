@@ -19,30 +19,21 @@ struct Client_{
         char telephone_p[SIZE];//taille a changer avec l'allocation dynamique...
         char *mel_p;//taille a changer avec l'allocation dynamique...
         char *profession_p;//taille a changer avec l'allocation dynamique...
+        char val_chaine1[256];
+        char val_chaine2[256];
+        char nom_champ1[256];
+        char nom_champ2[256];
 
 };
 typedef struct Client_ Client;//notation moins lourde
 void ajouter_Client(  const Client *Id_client);
 void Afficher_annuaire_clients(const Client *Id_client);
 void Ecriture_annuaire_clients(const Client *Id_client);
-void Separation_mel_p( Client *Id_client);
 void Filtrer_combiner_deux_champs(const Client *Id_client);
-
-
-//déclaration de la structure doublons pour tester la validité de l'annuaire
-/*struct doublons_{
-
-        char *temp;//taille a changer avec l'allocation dynamique...
-        char **donnes;//taille a changer avec l'allocation dynamique...
-        //int ** tableau2d;
-        int ligne;
-
-};
-typedef struct doublons_ doublons;//notation moins lourde
-
-*/
-
-
+int Filtrer(char *s1,char *sch1,char *s2,char *sch2,int index,int index2,int cpt);
+void tri_client_par_nom( const Client*d,int size);
+void Verifier_validite_annuaire(const Client*d,int size);
+int sous_chaine(const char *s_ch, const char *ch);
 
 struct occurence_{
 
@@ -53,21 +44,3 @@ struct occurence_{
 typedef struct occurence_ occurence;
 
 
-
-struct personne_ {
-  char nom[100];
-  char prenom [100];
-  char code[50];
-  char ville [50];
-    char tel[50];
-  char adresse [100];
-    char prof[50];
-
-
-  // d'autres champs de données pour chaque personne
-};
-typedef struct personne_  personne;
-void tri_bulle( struct personne_ personne[],int size);
-void client( const struct personne_ personne[],int size);
-void Verifier_validite_annuaire(struct personne_ personne[],int size);
-void doublons( struct personne_ personne[],int size);
