@@ -1,4 +1,9 @@
-/**< \file fonction.c */
+/**<
+*\file fonction.c
+*\brief les fonctions si dessous
+*\author Rafik BOUCHENNA G4S1B
+*\date 08/01/2023
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -7,8 +12,15 @@
 #define TAILLE 100
 
 
+/** \brief
+ *
+ * \param Id_client const Client*
+ * \return void
+ *
+ */
+ //fonction a revoir pour plus de lisibilité
 void Afficher_annuaire_clients(const Client *Id_client){
-    fgetc(stdin);
+fgetc(stdin);
  FILE*fichier;
  FILE*fp;
 
@@ -34,6 +46,12 @@ fclose(fp);
 }
 
 
+/** \brief
+ *
+ * \param Id_client const Client*
+ * \return void
+ *
+ */
 void Ecriture_annuaire_clients(const Client *Id_client){
 //cette fonction ecrit copie les contenu du fichier annuaire.csv
 FILE*fichier;
@@ -42,6 +60,14 @@ FILE*fp;
 fichier = fopen("annuaire.csv","r");//ouverture du fichier en mode lecture
 
 fp = fopen("annuaire.txt","w");//ouverture du fichier en mode lecture
+if(fichier ==NULL){
+    perror("Erreur d'ouverture du fichier !");
+    exit(EXIT_FAILURE);
+}
+if(fp ==NULL){
+    perror("Erreur d'ouverture du fichier !");
+    exit(EXIT_FAILURE);
+}
    char c;
 
 
@@ -55,7 +81,7 @@ fp = fopen("annuaire.txt","w");//ouverture du fichier en mode lecture
 
 fclose(fichier);//ferme le fichier
 
-fclose(fp);
+fclose(fp);//ferme le fichier
 
 
 }
@@ -66,8 +92,14 @@ fclose(fp);
 
 
 
+/** \brief
+ *
+ * \param Id_client const Client*
+ * \return void
+ *
+ */
 void ajouter_Client(  const Client *Id_client){
-//cette fonction compare mel_p donner en entrÃ©e et verifier si elle est deja prÃ©sente dans le fichier
+//cette fonction compare mel_p donner en entrée et verifier si elle est deja présente dans le fichier
 //cette fonction permet a l'utilisateur d'entrer ces donnes -> utilsation de fgets pour les chaines de  caracteres
 Client p;
 occurence d;
@@ -77,7 +109,7 @@ resultat_ajouter = fopen("resultat_ajouter.txt","w");//ouverture du fichier ecri
 FILE *annuaire = fopen("annuaire.csv", "r+");//ouverture du fichier lecture pour  compter le nombre de ligne
 FILE *file = fopen("annuaire.txt", "r");
 //char chaine[100];//taille a changer avec l'allocation dynamique...
-char *temp = (char *) malloc (100*sizeof(char));//j'alloue une taille de 50 octets etant donnes qu'un char = 1 octet
+char *temp = (char *) malloc (100*sizeof(char));//j'alloue une taille de 100 octets etant donnes qu'un char = 1 octet
 if(file == NULL){
     perror("erreur d'ouverture du fichier !");
     exit(EXIT_FAILURE);
@@ -97,7 +129,7 @@ int ligne =0;
 //cette boucle permet de compter le nombre de ligne dans le fichier annuaire.csv
 while(!feof(annuaire)&& !ferror(annuaire)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
             if(fgets(donnes[ligne],1000,annuaire)!= NULL){//lire une chaine de caractere
-                    fprintf(resultat_ajouter,"%s\n",donnes[ligne]);//copie les lignes dans le fichier donnÃ© en sortie
+                    fprintf(resultat_ajouter,"%s\n",donnes[ligne]);//copie les lignes dans le fichier donné en sortie
                 ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
             }
 }
@@ -117,7 +149,7 @@ NOM:{
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';//au cas ou il ya des \n
 
             if(p.nom_p[0] != '\0'){
-                //si le champ nom est remplie alors je lui rÃ©alloue la taille de la chaine->optimisation avec strlen
+                //si le champ nom est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
                 p.nom_p = (char*)realloc(p.nom_p,strlen(p.nom_p)*sizeof(char));
 
             }
@@ -159,7 +191,7 @@ PRENOM:{
             fgets(p.prenom_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';//au cas ou il ya des \n
              if(p.prenom_p[0] != '\0'){
-                    //si le champ prenom est remplie alors je lui rÃ©alloue la taille de la chaine->optimisation avec strlen
+                    //si le champ prenom est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
@@ -215,7 +247,7 @@ VIL:{
             fgets(p.ville_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';//au cas ou il ya des \n
                if(p.ville_p[0] != '\0'){
-                    //si le champ ville est remplie alors je lui rÃ©alloue la taille de la chaine->optimisation avec strlen
+                    //si le champ ville est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
@@ -285,7 +317,7 @@ MEL:{
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
 
                    if(p.mel_p[0] != '\0'){
-                        //si le champ mel est remplie alors je lui rÃ©alloue la taille de la chaine->optimisation avec strlen
+                        //si le champ mel est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
                    p.mel_p = (char*)realloc(p.mel_p,strlen(p.mel_p)*sizeof(char));
             }
             else{
@@ -314,7 +346,7 @@ MEL:{
 
                 d.occurrence1 = 0;
                 d.occurrence2 = 0;
-                //verification de la validitÃ© de l'adresse mail saisie
+                //verification de la validité de l'adresse mail saisie
                         for(int i  = 0; p.mel_p[i] != '\0'; i++)
                         {
                                if(p.mel_p[i] == '@'){
@@ -343,8 +375,8 @@ MEL:{
 
                         }
 
-                         printf("Le nombre dâ€™occurrence de @ est %d\n", d.occurrence1);
-                         printf("Le nombre dâ€™occurrence de . est %d\n", d.occurrence2);
+                         printf("Le nombre d’occurrence de @ est %d\n", d.occurrence1);
+                         printf("Le nombre d’occurrence de . est %d\n", d.occurrence2);
                 strcpy(temp,p.mel_p);//copie la chaine saisie si elle est valide pour comparer l'existance de celle ci dans l'annuaire
 
            struct Client_ *p = (struct Client_*)calloc(1000,sizeof(struct Client_));//allocation dynamique de le structure
@@ -363,7 +395,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur j
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur j
 
         p[cpt].nom_p[j] = (char) c;
         //lis le caracteres suivant
@@ -375,7 +407,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
         //lis le caracteres suivant
@@ -388,7 +420,7 @@ while(cpt<ligne){
                 //lis le caracteres suivant
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
         //lis le caracteres suivant
@@ -400,7 +432,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caracteres suivant
@@ -412,7 +444,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
         //lis le caracteres suivant
@@ -424,7 +456,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
         //lis le caracteres suivant
@@ -444,7 +476,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
         //lis le caracteres suivant
@@ -457,7 +489,7 @@ cpt++;//incremente le compteur pour passer a la structure suivante
 
 
 }
-fprintf(resultat_ajouter,"%s,",temp);//ajoute l'adresse valide dans le fichier donnÃ© en sortie
+fprintf(resultat_ajouter,"%s,",temp);//ajoute l'adresse valide dans le fichier donné en sortie
 fprintf(annuaire,"%s,",temp);//ajoute l'adresse valide dans le fichier principale
 
 
@@ -514,11 +546,18 @@ fclose(annuaire);
 
 
 
+/** \brief
+ *
+ * \param Client*d const
+ * \param size int
+ * \return void
+ *
+ */
 void Verifier_validite_annuaire(const Client*d,int size){
 FILE *file = fopen("annuaire.txt", "r");
     FILE *annuaire = fopen("annuaire.csv", "r");
 
-    // VÃ©rifiez si le fichier a Ã©tÃ© ouvert correctement
+    // Vérifiez si le fichier a été ouvert correctement
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
@@ -541,9 +580,9 @@ while(!feof(annuaire)&& !ferror(annuaire)){//si ferror est vrai alors le fichier
 }
 fclose(annuaire);
 printf("le nombre de ligne du fichier : %d\n",ligne);
-// Utilise un compteur pour suivre l'emplacement oÃ¹ chaque caractÃ¨re doit Ãªtre insÃ©rÃ© dans le tableau
+// Utilise un compteur pour suivre l'emplacement où chaque caractère doit être inséré dans le tableau
 int i = 0;
-// Utilise fgetc pour lire chaque caractÃ¨re du fichier jusqu'Ã  ce que, l'on atteind la fin du fichier
+// Utilise fgetc pour lire chaque caractère du fichier jusqu'à ce que, l'on atteind la fin du fichier
 int c = fgetc(file);
 
 while(cpt<ligne){
@@ -559,7 +598,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
         //lis le caratere suivant
@@ -572,7 +611,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
         //lis le caratere suivant
@@ -585,7 +624,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
         //lis le caratere suivant
@@ -598,7 +637,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caratere suivant
@@ -610,7 +649,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
         //lis le caratere suivant
@@ -622,7 +661,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
         //lis le caratere suivant
@@ -634,7 +673,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;//passe au champs suivant
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
         //lis le caratere suivant
@@ -667,22 +706,24 @@ free(p);
 
 }
 
+
+
 /** \brief la fonction tri_client_par_nom prends en sortie l'annuaire trier en fonction du nom
- * \brief :entrÃ©es : le nom_annuaire n'est pas modifiable
-   \brief :prÃ©-conditions : le nom de l'annuaire doit Ã©tre valide
-   \brief :sorties : les donnes sont donnÃ© en sortie dans le fichier resultat_afficher_tries_nom dans le meme repertoire que l'executable
-   \brief  :post-conditions
- * \param   const Client*d,int size
- * \param resultat_afficher_tries_nom est un annuaire valide dont le contenu correspond au donnÃ©es des clients trier dans l'ordre alphabÃ©tique
- * \return  renvoie l'annuaire en sortie
+ *
+ * \param[in] le nom_annuaire
+ * \param[in] Client*d const
+ * \param[in] size un entier correspondant au nombre de ligne du fichier annuaire
+ *
+ *\param[out]  les donnes sont donné en sortie dans le fichier resultat_afficher_tries_nom
+                dans le meme repertoire que l'executable
+ * \return void
  *
  */
-
 void tri_client_par_nom( const Client*d,int size){
     FILE *file = fopen("annuaire.txt", "r");
     FILE *annuaire = fopen("annuaire.csv", "r");
     FILE *Resultat = fopen("resultat_trier_par_nom.txt", "w");
-    // VÃ©rifiez si le fichier a Ã©tÃ© ouvert correctement
+    // Vérifiez si le fichier a été ouvert correctement
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
@@ -709,10 +750,10 @@ while(!feof(annuaire)&& !ferror(annuaire)){//si ferror est vrai alors le fichier
 }
 fclose(annuaire);
 printf("le nombre de ligne du fichier : %d\n",ligne);
-    // Utilisez un compteur pour suivre l'emplacement oÃ¹ chaque caractÃ¨re doit Ãªtre insÃ©rÃ© dans le tableau
+    // Utilisez un compteur pour suivre l'emplacement où chaque caractère doit être inséré dans le tableau
     int i = 0;
 
-    // Utilisez fgetc pour lire chaque caractÃ¨re du fichier jusqu'Ã  ce que vous atteigniez la fin du fichier
+    // Utilisez fgetc pour lire chaque caractère du fichier jusqu'à ce que vous atteigniez la fin du fichier
 
 
 
@@ -731,7 +772,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
         //lis le caractere suivant
@@ -743,7 +784,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -755,7 +796,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -767,7 +808,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -779,7 +820,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -792,7 +833,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -804,7 +845,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -826,7 +867,7 @@ cpt++;//incremente le compteur pour passer a la structure suivante
               }
         }
   }
-//affiche les valeurs et ecrit dans le fichier donnÃ© en sortie
+//affiche les valeurs et ecrit dans le fichier donné en sortie
   for (i = 0; i < cpt; i++) {
   printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
   fprintf(Resultat,"%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
@@ -842,6 +883,20 @@ free(p);
 fclose(file);
 fclose(Resultat);
 }
+/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donné dans la fonction filtrer_combiner_deux_champs
+           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donné.\n
+ *
+ * \param[in] s1 char* chaine du champs numéro 1.
+ * \param[in] sch1 char* sous-chaine  pour le champs numéro 1.
+ * \param[in] s2 char* chaine du champs numéro 2.
+ * \param[in] sch2 char* sous-chaine  pour le champs numéro 2.
+ * \param[in] index int la position ou commence la comparaison des caracteres du champs numéro 1.
+ * \param[in] index2 int la position ou commence la comparaison des caracteres du champs numéro 2.
+ * \param[in] cpt int  compteur pour connaitre de nombre lignes contenu dans l'annuaire.
+ *
+ * \return  un entier **trouvee** pour la fonction filtrer_combiner_deux_champs
+ *
+ */
 int Filtrer(char *s1,char *sch1,char *s2,char *sch2,int index,int index2,int cpt){
 
 int len1 = strlen(sch1);
@@ -864,6 +919,26 @@ if(sch1[0]=='\0' || sch2[0]=='\0'){trouvee = 2;return trouvee;}
 
 }
 
+/** \brief Cette fonction filtre les données du fichier annuaire donné en entrée
+           suivant 2 champs combiner **val_chaine1** et **val_chaine2**.
+ *
+ * \param[in] Id_client const Client* la structure qui contient les champs suivant :
+         nom_p;
+         prenom_p;
+         code_postal_p;
+         ville_p;telephone_p;
+         mel_p;
+         profession_p;
+         val_chaine1;
+         val_chaine2;
+         nom_champ1;
+         nom_champ2;
+ *
+ *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données filtrer
+ *
+ * \return void
+ *
+ */
 void Filtrer_combiner_deux_champs(const Client *Id_client){
 Client f;
     FILE *file = fopen("annuaire.txt", "r");
@@ -911,7 +986,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -925,7 +1000,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -937,7 +1012,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -949,7 +1024,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -961,7 +1036,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -974,7 +1049,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -986,7 +1061,7 @@ for(int j= 0;;j++){
                 c = fgetc(file);
                     break;
             }
-        // InsÃ©rez le caractÃ¨re lu dans le tableau et incrÃ©mentez le compteur
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -994,7 +1069,7 @@ for(int j= 0;;j++){
     }
 
 
-  // Utilisez strncasecmp pour comparer les n premiers caractÃ¨res de str1 Ã  partir de l'index donnÃ© Ã  str2
+  // Utilisez strncasecmp pour comparer les n premiers caractères de str1 à partir de l'index donné à str2
 
 
 cpt++;//incremente le compteur pour passer a la structure suivante
