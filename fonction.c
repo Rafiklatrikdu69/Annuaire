@@ -1,6 +1,6 @@
 /**<
 *\file fonction.c
-*\brief les fonctions si dessous
+*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification voir(https://en.cppreference.com/w/c/99)
 *\author Rafik BOUCHENNA G4S1B
 *\date 08/01/2023
 */
@@ -42,6 +42,191 @@ fgetc(stdin);
    fclose(fichier);//ferme le fichier
 
 fclose(fp);
+
+}
+
+/** \brief
+ *
+ * \param Id_client const Client*
+ * \return void
+ *
+ */
+void Rendre_annuaire_valide(const Client *Id_client){
+FILE*annuaire = fopen("annuaire.csv","r");
+FILE *file = fopen("annuaire.txt", "r");
+FILE*nv = fopen("annuaireValide.txt","w");
+if(annuaire == NULL){
+    perror("Erreur d'ouverture du fichier");
+    exit(EXIT_FAILURE);
+}
+if(nv == NULL){
+    perror("Erreur d'ouverture du fichier");
+    exit(EXIT_FAILURE);
+}
+if(file == NULL){
+    perror("Erreur d'ouverture du fichier");
+    exit(EXIT_FAILURE);
+}
+struct Client_ *p = (struct Client_*)calloc(1000,sizeof(struct Client_));
+
+char donnes[1000][1000];//tableau 2d pour compter le nombre de lignes
+
+int cpt = 0;
+int ligne =0;
+while(!feof(annuaire)&& !ferror(annuaire)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
+            if(fgets(donnes[ligne],1000,annuaire)!= NULL){//lire une chaine de caractere
+                ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
+            }
+}
+fclose(annuaire);
+printf("le nombre de ligne du fichier : %d\n",ligne);
+// Utilise un compteur pour suivre l'emplacement où chaque caractère doit être inséré dans le tableau
+int i = 0;
+// Utilise fgetc pour lire chaque caractère du fichier jusqu'à ce que, l'on atteind la fin du fichier
+int c = fgetc(file);
+
+while(cpt<ligne){
+        p[cpt].nom_p = (char *) calloc (256,sizeof(char));
+        p[cpt].prenom_p = (char *) calloc (256,sizeof(char));
+        p[cpt].ville_p = (char *) calloc (256,sizeof(char));
+        p[cpt].mel_p = (char *) calloc (256,sizeof(char));
+        p[cpt].profession_p = (char *) calloc (256,sizeof(char));
+    for(int j= 0;;j++){
+
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].nom_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+
+    }
+      for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].prenom_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+
+    }
+        for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].code_postal_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+
+    }
+          for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].ville_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+    }
+    for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].telephone_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+    }
+        for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].mel_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+    }
+         for(int j= 0;;j++){
+             if(c==',' ||c=='\n'){
+
+                c = fgetc(file);
+                    break;//passe au champs suivant
+            }
+        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+
+        p[cpt].profession_p[j] = (char) c;
+        //lis le caratere suivant
+        c = fgetc(file);
+    }
+cpt++;//incremente le compteur pour passer a la structure suivante
+
+}
+//inspiration du tri a bulle pour supprimer les doublons
+  struct Client_ temp;
+  for (int i= 0; i < cpt; i++) {
+        for (int j = i+1 ;j < cpt; j++) {
+              if (stricmp(p[i].nom_p, p[j].nom_p) > 0) {
+                temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
+              }
+        }
+  }
+
+  for (int i= 0; i < cpt; i++) {
+        //si les adresses a l'indice i et i+1 sont identique alors je vais les deplacer a la fin du tableau
+        if (stricmp(p[i].mel_p, p[i+1].mel_p) == 0) {
+
+            for (int j = i+1;j < cpt; j++) {
+                    //deplace l'element a ma fin du tableau
+              p[j]=p[j+1];
+
+            }
+            cpt--;//decremente la taille du tableau
+            i--;
+        }
+
+
+
+  }
+  for(int i = 0;i<cpt;i++){
+        //affiche le tableau dans le fichier donné en sortie sans les doublons
+    fprintf(nv,"%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+  }
+
+//ferme le fichier
+fclose(nv);
+fclose(file);
+//libere la memoire
+free(p->nom_p);
+free(p->prenom_p);
+free(p->ville_p);
+free(p->mel_p);
+free(p->profession_p);
+free(p);
+
+
 
 }
 
@@ -98,7 +283,7 @@ fclose(fp);//ferme le fichier
  * \return void
  *
  */
-void ajouter_Client(  const Client *Id_client){
+void ajouter_Client(  const Client *Id_client,const char *annuaireTXT){
 //cette fonction compare mel_p donner en entrée et verifier si elle est deja présente dans le fichier
 //cette fonction permet a l'utilisateur d'entrer ces donnes -> utilsation de fgets pour les chaines de  caracteres
 Client p;
@@ -107,7 +292,7 @@ fgetc(stdin);
 FILE*resultat_ajouter;
 resultat_ajouter = fopen("resultat_ajouter.txt","w");//ouverture du fichier ecriture pour ecrire le nouveau client
 FILE *annuaire = fopen("annuaire.csv", "r+");//ouverture du fichier lecture pour  compter le nombre de ligne
-FILE *file = fopen("annuaire.txt", "r");
+FILE *file = fopen(annuaireTXT, "r");
 //char chaine[100];//taille a changer avec l'allocation dynamique...
 char *temp = (char *) malloc (100*sizeof(char));//j'alloue une taille de 100 octets etant donnes qu'un char = 1 octet
 if(file == NULL){
@@ -719,8 +904,8 @@ free(p);
  * \return void
  *
  */
-void tri_client_par_nom( const Client*d,int size){
-    FILE *file = fopen("annuaire.txt", "r");
+void tri_client_par_nom( const Client*d,int size,const char *annuaireTXT){
+    FILE *file = fopen(annuaireTXT, "r");
     FILE *annuaire = fopen("annuaire.csv", "r");
     FILE *Resultat = fopen("resultat_trier_par_nom.txt", "w");
     // Vérifiez si le fichier a été ouvert correctement
@@ -939,9 +1124,9 @@ if(sch1[0]=='\0' || sch2[0]=='\0'){trouvee = 2;return trouvee;}
  * \return void
  *
  */
-void Filtrer_combiner_deux_champs(const Client *Id_client){
+void Filtrer_combiner_deux_champs(const Client *Id_client,const char *annuaireTXT){
 Client f;
-    FILE *file = fopen("annuaire.txt", "r");
+    FILE *file = fopen(annuaireTXT, "r");
     FILE *annuaire = fopen("annuaire.csv", "r");
     FILE *resultat_filtrer_combiner_deux_champs = fopen("resultat_filtrer_combiner_deux_champs.txt", "w");
     if(file == NULL){
