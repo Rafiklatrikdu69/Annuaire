@@ -18,6 +18,8 @@ int main()
 int n;
 char c;
 Client d;
+//definition des constantes pour les fichiers
+const char annuaireTXT[50] = "annuaire.txt";
 
 
         MENU:{
@@ -26,14 +28,15 @@ Client d;
             printf("3-> Verifier la validité de l'annuaire\n");
             printf("4-> trier Client par le nom\n");
             printf("5-> Ecriture annuaire\n");
-            printf("6-> filtrer un champs\n");
-        printf("entrer votre choix\n");
-        scanf("%d",&n);
+            printf("6-> Rendre l'annuaire valide\n");
+            printf("7-> filtrer avec deux champs combiner\n");
+            printf("entrez votre choix\n");
+            scanf("%d",&n);
 
         switch(n){
         case 1:
            Ecriture_annuaire_clients(&d);
-            ajouter_Client(&d);
+            ajouter_Client(&d,annuaireTXT);
         break;
         case 2:
           Afficher_annuaire_clients(&d);
@@ -44,11 +47,18 @@ Client d;
         break;
         case 4:
             Ecriture_annuaire_clients(&d);
-            tri_client_par_nom(&d,1);
+            tri_client_par_nom(&d,1,annuaireTXT);
         break;
         case 5:
            Ecriture_annuaire_clients(&d);
-          Filtrer_combiner_deux_champs(&d);
+        break;
+        case 6:
+           Ecriture_annuaire_clients(&d);
+          Rendre_annuaire_valide(&d);
+        break;
+        case 7:
+           Ecriture_annuaire_clients(&d);
+          Filtrer_combiner_deux_champs(&d,annuaireTXT);
         break;
         default :
             printf("erreur");
