@@ -1,24 +1,27 @@
-/**< \file fonction.h */
-#pragma once//programmation modulaire
-#define SIZE 20
-/** \brief
+
+
+/**
+ *\file fonction.h
+ *\brief Si dessous vous trouverais les différentes
+        fonctions et structures qui ont permis la réalisation de ce projet
  *
- * \param
- * \param
+ *
  * \return
  *
  */
 //attention au warning
 //declaration de la structure client
+#pragma once//programmation modulaire
+#define SIZE 20
 struct Client_{
-        //char *nom_p;en cours de developpement-> allocation dynamique
-        char *nom_p;//taille a changer avec l'allocation dynamique...
-        char *prenom_p;//taille a changer avec l'allocation dynamique...
-        char code_postal_p[SIZE];//taille a changer avec l'allocation dynamique...
-        char *ville_p;//taille a changer avec l'allocation dynamique...
-        char telephone_p[SIZE];//taille a changer avec l'allocation dynamique...
-        char *mel_p;//taille a changer avec l'allocation dynamique...
-        char *profession_p;//taille a changer avec l'allocation dynamique...
+
+        char *nom_p;
+        char *prenom_p;
+        char code_postal_p[SIZE];
+        char *ville_p;
+        char telephone_p[SIZE];
+        char *mel_p;
+        char *profession_p;
         char val_chaine1[256];
         char val_chaine2[256];
         char nom_champ1[256];
