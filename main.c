@@ -18,19 +18,20 @@ int main()
 int n;
 char c;
 Client d;
+
 //definition des constantes pour les fichiers
 const char annuaireTXT[50] = "annuaire.txt";
 
-
+        /************************ LE MENU **********************/
         MENU:{
-            printf("1-> ajout Client\n");
+            printf("1-> Ajout Client\n");
             printf("2-> Afficher annuaire Client\n");
-            printf("3-> Verifier la validité de l'annuaire\n");
-            printf("4-> trier Client par le nom\n");
+            printf("3-> Verifier la validite de l'annuaire\n");
+            printf("4-> Trier Client par le nom\n");
             printf("5-> Ecriture annuaire\n");
             printf("6-> Rendre l'annuaire valide\n");
-            printf("7-> filtrer avec deux champs combiner\n");
-            printf("entrez votre choix\n");
+            printf("7-> Filtrer avec deux champs combiner\n");
+            printf("Entrez votre choix\n");
             scanf("%d",&n);
 
         switch(n){
@@ -61,10 +62,10 @@ const char annuaireTXT[50] = "annuaire.txt";
           Filtrer_combiner_deux_champs(&d,annuaireTXT);
         break;
         default :
-            printf("erreur");
+            printf("Erreur de choix");
 
         }
-        printf("\nvoulez vous continuer : entrer o ou O\n");
+        printf("\nVoulez vous continuer : Entrez o ou O\n");
         scanf("%c",&c);
 
         if(c=='o' || c=='O'){
