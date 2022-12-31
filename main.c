@@ -1,8 +1,8 @@
 /**<
 *\file fonction.c
 *\brief L'objectif de ce projet etait de concevoir une application
-        de gestion d'un annuaire pour une organisation qui possedent un ensemble de données sur ses clients
-        des fonctions pour repondre a cette sont donnes si dessous avec des contraintes spécifiques
+        de gestion d'un annuaire pour une organisation qui possedent un ensemble de donnÃ©es sur ses clients
+        des fonctions pour repondre a cette problematique sont donnes si dessous avec des contraintes spÃ©cifiques
 *\author Rafik BOUCHENNA G4S1B
 *\date 08/01/2023
 */
