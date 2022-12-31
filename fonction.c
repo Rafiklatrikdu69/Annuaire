@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include<string.h>//strcmp,strncmp,strstr,stricmp
 #include<assert.h>//teste en boite noire
-#include "fonction.h"//Séparation en 3 fichiers
+#include "fonction.h"//Sï¿½paration en 3 fichiers
 #define TAILLE 100
 
 
@@ -18,10 +18,11 @@
  * \return void
  *
  */
- //fonction a revoir pour plus de lisibilité
+ //fonction a revoir pour plus de lisibilitï¿½
 void Afficher_annuaire_clients(const Client *Id_client){
 fgetc(stdin);
  FILE*fichier;
+ //menu
 printf("Voici les differents fichiers que vous pouvez ouvrir : \n");
 puts("resultat_filtrer_combiner_deux_champs.txt\n");
 puts("annuaireValide.txt\n");
@@ -100,7 +101,7 @@ printf("le nombre de ligne du fichier : %d\n",ligne);
 struct Client_ *p = (struct Client_*)calloc(ligne+1,sizeof(struct Client_));
 
 
-// Utilise fgetc pour lire chaque caractère du fichier jusqu'à ce que, l'on atteind la fin du fichier
+// Utilise fgetc pour lire chaque caractï¿½re du fichier jusqu'ï¿½ ce que, l'on atteind la fin du fichier
 int c = fgetc(file);
 
 while(cpt<ligne){
@@ -111,7 +112,7 @@ while(cpt<ligne){
         p[cpt].mel_p = (char *) calloc (256,sizeof(char));
         p[cpt].profession_p = (char *) calloc (256,sizeof(char));
     for(int j= 0;;j++){
-    // Utilise un compteur pour suivre l'emplacement où chaque caractère doit être inséré dans le tableau
+    // Utilise un compteur pour suivre l'emplacement oï¿½ chaque caractï¿½re doit ï¿½tre insï¿½rï¿½ dans le tableau
              if(c==',' ||c=='\n'){
 
                 c = fgetc(file);//lis le caractere
@@ -119,7 +120,7 @@ while(cpt<ligne){
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -135,7 +136,7 @@ while(cpt<ligne){
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -147,7 +148,7 @@ while(cpt<ligne){
                 c = fgetc(file);//lis le caractere
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -161,7 +162,7 @@ while(cpt<ligne){
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -173,7 +174,7 @@ while(cpt<ligne){
                 c = fgetc(file);//lis le caractere
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -188,7 +189,7 @@ while(cpt<ligne){
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -202,7 +203,7 @@ while(cpt<ligne){
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -229,7 +230,7 @@ cpt++;//incremente le compteur pour passer au tableau de structure suivant
         if (stricmp(p[i].mel_p, p[i+1].mel_p) == 0) {
 
             for (int j = i+1;j < cpt; j++) {
-                    //deplace l'élement a ma fin du tableau
+                    //deplace l'ï¿½lement a ma fin du tableau
               p[j]=p[j+1];
 
             }
@@ -241,7 +242,7 @@ cpt++;//incremente le compteur pour passer au tableau de structure suivant
 
   }
   for(int i = 0;i<cpt;i++){
-        //affiche le tableau dans le fichier donné en sortie sans les doublons
+        //affiche le tableau dans le fichier donnï¿½ en sortie sans les doublons
     fprintf(nv,"%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
   }
 
@@ -314,7 +315,7 @@ fclose(fp);//ferme le fichier
  *
  */
 void ajouter_Client(  const Client *Id_client,const char *annuaireTXT){
-//cette fonction compare mel_p donner en entrée et verifier si elle est deja présente dans le fichier
+//cette fonction compare mel_p donner en entrï¿½e et verifier si elle est deja prï¿½sente dans le fichier
 //cette fonction permet a l'utilisateur d'entrer ces donnes -> utilsation de fgets pour les chaines de  caracteres
 Client p;
 occurence d;
@@ -352,7 +353,7 @@ int ligne =0;
 //cette boucle permet de compter le nombre de ligne dans le fichier annuaire.csv
 while(!feof(annuaire)&& !ferror(annuaire)){//si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
             if(fgets(p.donnes[ligne],1000,annuaire)!= NULL){//lire une chaine de caractere
-                    fprintf(resultat_ajouter,"%s\n",p.donnes[ligne]);//copie les lignes dans le fichier donné en sortie
+                    fprintf(resultat_ajouter,"%s\n",p.donnes[ligne]);//copie les lignes dans le fichier donnï¿½ en sortie
                 ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
             }
 }
@@ -380,7 +381,7 @@ NOM:{
             p.nom_p[strcspn(p.nom_p,"\r\n")] = '\0';//au cas ou il ya des \n
 
             if(p.nom_p[0] != '\0'){
-                //si le champ nom est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
+                //si le champ nom est remplie alors je lui rï¿½alloue la taille de la chaine->optimisation avec strlen
                 p.nom_p = (char*)realloc(p.nom_p,strlen(p.nom_p)*sizeof(char));
 
             }
@@ -422,7 +423,7 @@ PRENOM:{
             fgets(p.prenom_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.prenom_p[strcspn(p.prenom_p,"\r\n")] = '\0';//au cas ou il ya des \n
              if(p.prenom_p[0] != '\0'){
-                    //si le champ prenom est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
+                    //si le champ prenom est remplie alors je lui rï¿½alloue la taille de la chaine->optimisation avec strlen
                  p.prenom_p = (char*)realloc(p.prenom_p,strlen(p.prenom_p)*sizeof(char));
             }
             else{
@@ -479,7 +480,7 @@ VIL:{
             fgets(p.ville_p,TAILLE,stdin);//fgets->saisie de chaine de caracteres
             p.ville_p[strcspn(p.ville_p,"\r\n")] = '\0';//au cas ou il ya des \n
                if(p.ville_p[0] != '\0'){
-                    //si le champ ville est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
+                    //si le champ ville est remplie alors je lui rï¿½alloue la taille de la chaine->optimisation avec strlen
                    p.ville_p = (char*)realloc(p.ville_p,strlen(p.ville_p)*sizeof(char));
             }
             else{
@@ -548,7 +549,7 @@ MEL:{
             p.mel_p[strcspn(p.mel_p,"\n")] = '\0';//la fonction strcspn permet de gerer le cas ou chaine est egale au nombre de caracteres en prenant en compte \n
 
                    if(p.mel_p[0] != '\0'){
-                        //si le champ mel est remplie alors je lui réalloue la taille de la chaine->optimisation avec strlen
+                        //si le champ mel est remplie alors je lui rï¿½alloue la taille de la chaine->optimisation avec strlen
                    p.mel_p = (char*)realloc(p.mel_p,strlen(p.mel_p)*sizeof(char));
             }
             else{
@@ -577,7 +578,7 @@ MEL:{
 
                 d.occurrence1 = 0;
                 d.occurrence2 = 0;
-                //verification de la validité de l'adresse mail saisie
+                //verification de la validitï¿½ de l'adresse mail saisie
                         for(int i  = 0; p.mel_p[i] != '\0'; i++)
                         {
                                if(p.mel_p[i] == '@'){
@@ -606,8 +607,8 @@ MEL:{
 
                         }
 
-                         printf("Le nombre d’occurrence de @ est %d\n", d.occurrence1);
-                         printf("Le nombre d’occurrence de . est %d\n", d.occurrence2);
+                         printf("Le nombre dï¿½occurrence de @ est %d\n", d.occurrence1);
+                         printf("Le nombre dï¿½occurrence de . est %d\n", d.occurrence2);
                 strcpy(temp,p.mel_p);/*copie la chaine saisie si elle est valide pour
                                       comparer l'existance de celle ci dans l'annuaire*/
               /*struct Client_ est une structure qui represente un client,
@@ -632,7 +633,7 @@ while(cpt<ligne){
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -648,7 +649,7 @@ while(cpt<ligne){
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -660,7 +661,7 @@ while(cpt<ligne){
                 c = fgetc(file);//lis le caractere suivant
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -674,7 +675,7 @@ while(cpt<ligne){
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -686,7 +687,7 @@ while(cpt<ligne){
                 c = fgetc(file);//lis le caractere suivant
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -701,7 +702,7 @@ while(cpt<ligne){
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -723,7 +724,7 @@ while(cpt<ligne){
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -732,7 +733,7 @@ while(cpt<ligne){
 cpt++;//incremente le compteur pour passer a la structure suivante
 
 }
-fprintf(resultat_ajouter,"%s,",temp);//ajoute l'adresse valide dans le fichier donné en sortie
+fprintf(resultat_ajouter,"%s,",temp);//ajoute l'adresse valide dans le fichier donnï¿½ en sortie
 fprintf(annuaire,"%s,",temp);//ajoute l'adresse valide dans le fichier principale
 
 
@@ -792,7 +793,7 @@ fclose(annuaire);
 
 
 
-/** \brief La fonction determine si l'annuaire donné en entree est valide suivant differentes contraintes
+/** \brief La fonction determine si l'annuaire donnï¿½ en entree est valide suivant differentes contraintes
  *
  * \param[in] Client*d const
  * \param size int
@@ -805,7 +806,7 @@ Client r;
 FILE *file = fopen("annuaire.txt", "r");
 FILE *annuaire = fopen("annuaire.csv", "r");
 
-    // Vérifiez si le fichier a été ouvert correctement
+    // Vï¿½rifiez si le fichier a ï¿½tï¿½ ouvert correctement
     if (file == NULL) {// si valeur renvoyer est NULL alors le fichier n'existe ou ne peux pas etre ouvert
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
@@ -842,7 +843,7 @@ printf("le nombre de ligne du fichier : %d\n",ligne);
 struct Client_ *p = (struct Client_*)calloc(ligne+1,sizeof(struct Client_));
 
 int i = 0;
-// Utilise fgetc pour lire chaque caractère du fichier jusqu'à ce que, l'on atteind la fin du fichier
+// Utilise fgetc pour lire chaque caractï¿½re du fichier jusqu'ï¿½ ce que, l'on atteind la fin du fichier
 int c = fgetc(file);
 
 while(cpt<ligne){
@@ -852,7 +853,7 @@ while(cpt<ligne){
         p[cpt].ville_p = (char *) calloc (256,sizeof(char));
         p[cpt].mel_p = (char *) calloc (256,sizeof(char));
         p[cpt].profession_p = (char *) calloc (256,sizeof(char));
-        // j'tilise un compteur pour suivre l'emplacement ou chaque caractère doit etre inserer dans le tableau
+        // j'tilise un compteur pour suivre l'emplacement ou chaque caractï¿½re doit etre inserer dans le tableau
     for(int j= 0;;j++){
              if(c==',' ||c=='\n'){
 
@@ -860,7 +861,7 @@ while(cpt<ligne){
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -875,7 +876,7 @@ while(cpt<ligne){
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -887,7 +888,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -900,7 +901,7 @@ while(cpt<ligne){
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -912,7 +913,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -926,7 +927,7 @@ while(cpt<ligne){
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -939,7 +940,7 @@ while(cpt<ligne){
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -991,7 +992,7 @@ free(p);
  * \param[in] Client*d const
  * \param[in] size un entier correspondant au nombre de ligne du fichier annuaire
  *
- *\param[out]  les donnes sont donné en sortie dans le fichier resultat_afficher_tries_nom
+ *\param[out]  les donnes sont donnï¿½ en sortie dans le fichier resultat_afficher_tries_nom
                 dans le meme repertoire que l'executable
  * \return void
  *
@@ -1002,7 +1003,7 @@ void tri_client_par_nom( const Client*d,int size,const char *annuaireTXT){
     FILE *file = fopen(annuaireTXT, "r");
     FILE *annuaire = fopen("annuaire.csv", "r");
     FILE *Resultat = fopen("resultat_trier_par_nom.txt", "w");
-    // Vérifiez si le fichier a été ouvert correctement
+    // Vï¿½rifiez si le fichier a ï¿½tï¿½ ouvert correctement
     if (file == NULL) {// si valeur renvoyer est NULL alors le fichier n'existe ou ne peux pas etre ouvert
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
@@ -1047,7 +1048,7 @@ struct Client_ *p = (struct Client_*)calloc(ligne+1,sizeof(struct Client_));
 
     int i = 0;
 
-    // Utilisez fgetc pour lire chaque caractère du fichier jusqu'à ce que vous atteigniez la fin du fichier
+    // Utilisez fgetc pour lire chaque caractï¿½re du fichier jusqu'ï¿½ ce que vous atteigniez la fin du fichier
 
     int c = fgetc(file);
 
@@ -1065,7 +1066,7 @@ while(cpt<ligne){
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -1080,7 +1081,7 @@ while(cpt<ligne){
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -1092,7 +1093,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -1105,7 +1106,7 @@ while(cpt<ligne){
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -1117,7 +1118,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -1131,7 +1132,7 @@ while(cpt<ligne){
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -1144,7 +1145,7 @@ while(cpt<ligne){
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
@@ -1166,7 +1167,7 @@ cpt++;//incremente le compteur pour passer a la structure suivante
               }
         }
   }
-//affiche les valeurs et ecrit dans le fichier donné en sortie
+//affiche les valeurs et ecrit dans le fichier donnï¿½ en sortie
   for (i = 0; i < cpt; i++) {
   printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
   fprintf(Resultat,"%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
@@ -1195,15 +1196,15 @@ free(p);
 fclose(file);
 fclose(Resultat);
 }
-/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donné dans la fonction filtrer_combiner_deux_champs
-           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donné.\n
+/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donnï¿½ dans la fonction filtrer_combiner_deux_champs
+           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donnï¿½.\n
  *
- * \param[in] s1 char* chaine du champs numéro 1.
- * \param[in] sch1 char* sous-chaine  pour le champs numéro 1.
- * \param[in] s2 char* chaine du champs numéro 2.
- * \param[in] sch2 char* sous-chaine  pour le champs numéro 2.
- * \param[in] index int la position ou commence la comparaison des caracteres du champs numéro 1.
- * \param[in] index2 int la position ou commence la comparaison des caracteres du champs numéro 2.
+ * \param[in] s1 char* chaine du champs numï¿½ro 1.
+ * \param[in] sch1 char* sous-chaine  pour le champs numï¿½ro 1.
+ * \param[in] s2 char* chaine du champs numï¿½ro 2.
+ * \param[in] sch2 char* sous-chaine  pour le champs numï¿½ro 2.
+ * \param[in] index int la position ou commence la comparaison des caracteres du champs numï¿½ro 1.
+ * \param[in] index2 int la position ou commence la comparaison des caracteres du champs numï¿½ro 2.
  * \param[in] cpt int  compteur pour connaitre de nombre lignes contenu dans l'annuaire.
  *
  * \return  un entier **trouvee** pour la fonction filtrer_combiner_deux_champs
@@ -1233,7 +1234,7 @@ return trouvee;
 
 }
 
-/** \brief Cette fonction filtre les données du fichier annuaire donné en entrée
+/** \brief Cette fonction filtre les donnï¿½es du fichier annuaire donnï¿½ en entrï¿½e
            suivant 2 champs combiner **val_chaine1** et **val_chaine2**.
  *
  * \param[in] Id_client const Client* la structure qui contient les champs suivant :
@@ -1248,7 +1249,7 @@ return trouvee;
          nom_champ1;
          nom_champ2;
  *
- *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données filtrer
+ *\param[out] le fichier resultat_filtrer_combiner_deux_champs donnï¿½ en sortie contient les nouvelles donnï¿½es filtrer
  *
  * \return void
  *
@@ -1320,7 +1321,7 @@ while(cpt<ligne){
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].nom_p[j] = (char) c;
 
@@ -1335,7 +1336,7 @@ while(cpt<ligne){
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].prenom_p[j] = (char) c;
             //lis le caractere suivant
@@ -1347,7 +1348,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].code_postal_p[j] = (char) c;
             //lis le caractere suivant
@@ -1360,7 +1361,7 @@ while(cpt<ligne){
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].ville_p[j] = (char) c;
         //lis le caractere suivant
@@ -1372,7 +1373,7 @@ while(cpt<ligne){
                 c = fgetc(file);
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].telephone_p[j] = (char) c;
             //lis le caractere suivant
@@ -1386,7 +1387,7 @@ while(cpt<ligne){
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].mel_p[j] = (char) c;
             //lis le caractere suivant
@@ -1399,7 +1400,7 @@ while(cpt<ligne){
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
                     break;
             }
-        // Insérez le caractère lu dans le tableau et incrémentez le compteur
+        // Insï¿½rez le caractï¿½re lu dans le tableau et incrï¿½mentez le compteur
 
         p[cpt].profession_p[j] = (char) c;
             //lis le caractere suivant
