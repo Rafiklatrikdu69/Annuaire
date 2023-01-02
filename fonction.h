@@ -30,15 +30,22 @@ typedef struct Client_{
 } Client;
 
 //declaration des fonctions
-void ajouter_Client(  const Client *Id_client,const char *annuaireCSV);
+void saisie_ajout_client(const char *annuaireTXT,const char *nom_p,const char *prenom_p,const char *code_postal_p,const char *ville_p,const char *telephone_p,const char *mel_p,const char *profession_p);
+int ajouter_Client(const char *annuaireTXT,const char *nom_p,const char *prenom_p,const char *code_postal_p,const char *ville_p,const char *telephone_p,const char *mel_p,const char *profession_p);
 void Afficher_annuaire_clients(const Client *Id_client);
 void Ecriture_annuaire_clients(const Client *Id_client);
 void Filtrer_combiner_deux_champs(const Client *Id_client,const char *annuaireCSV);
 int Filtrer(char *s1,char *sch1,int index,int cpt);
-void tri_client_par_nom( const Client*d,int size,const char *annuaireCSV);
+void tri_client_par_nom( const char *annuaireCSV);
 void Verifier_validite_annuaire(const Client*d,int size);
 void Rendre_annuaire_valide(const Client *Id_client);
-
+int saisieNOM(const char * nom);
+int saisiePRENOM(const char * prenom);
+int saisieCODEPOSTAL(const char * codepostal);
+int saisieVILLE(const char * ville);
+int saisieTELEPHONE(const char * telephone);
+int saisieMAIL(const char * mail);
+int saisiePROFESSION(const char * profession);
 struct occurence_{
 
         unsigned occurrence1;
