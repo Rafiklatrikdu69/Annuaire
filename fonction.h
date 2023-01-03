@@ -12,20 +12,21 @@
 #pragma once//programmation modulaire
 #define SIZE 20
 
-typedef struct Client_{
+typedef struct Client_
+{
 
-        char *nom_p;
-        char *prenom_p;
-        char code_postal_p[SIZE];
-        char *ville_p;
-        char telephone_p[SIZE];
-        char *mel_p;
-        char *profession_p;
-        char **donnes;//tableau 2D allocation dynamique
-        char val_chaine1[256];
-        char val_chaine2[256];
-        char nom_champ1[256];
-        char nom_champ2[256];
+    char *nom_p;
+    char *prenom_p;
+    char code_postal_p[SIZE];
+    char *ville_p;
+    char telephone_p[SIZE];
+    char *mel_p;
+    char *profession_p;
+    char **donnes;//tableau 2D allocation dynamique
+    char val_chaine1[256];
+    char val_chaine2[256];
+    char nom_champ1[256];
+    char nom_champ2[256];
 
 } Client;
 
@@ -46,10 +47,11 @@ int saisieVILLE(const char * ville);
 int saisieTELEPHONE(const char * telephone);
 int saisieMAIL(const char * mail);
 int saisiePROFESSION(const char * profession);
-struct occurence_{
+struct occurence_
+{
 
-        unsigned occurrence1;
-        unsigned occurrence2;
+    unsigned occurrence1;
+    unsigned occurrence2;
 
 };
 typedef struct occurence_ occurence;
