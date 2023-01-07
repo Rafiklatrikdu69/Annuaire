@@ -4,6 +4,9 @@
 Ce projet répond au cahier des charge d'un client
 
 Les fonctionnalités opérationnelles sont :
+
+
+
 Rafik
 * affichage de l'annuaire et des clients
 * le tri par le nom
@@ -13,6 +16,10 @@ Rafik
 * Rendre l'annuaire Valide
 * La sauvegarde de l'annuaire
 * L'ecriture de l'annuaire
+
+
+
+
 Astrid 
 * la suppression
 * la modification du mail
