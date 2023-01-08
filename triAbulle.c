@@ -1,12 +1,9 @@
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
-
+/**<
+*\file triAbulle.c
+*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification.Voir(https://en.cppreference.com/w/c/99)
+*\author Rafik BOUCHENNA G4S1B
+*\date 08/01/2023
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,18 +11,18 @@
 
 
 
-/** \brief la fonction tri_client_par_nom prend en sortie l'annuaire trié avec un tri cocktail en fonction du nom
+/** \brief la fonction tri_client_par_nom prend en sortie l'annuaire trié avec un tri a bulle en fonction du nom
  *
- * \param[in] le nom_annuaire
- * \param[in] annuaireTRI
- * \param[in] size un entier correspondant au nombre de ligne du fichier annuaire
+ * \param[in] preconditions : nom_annuaire est un annuaire valide donnée en entree
+ * \param[in] entree : nom_annuaire est un fichier valide
  *
- *\param[out]  les donnes sont donné en sortie dans le fichier resultat_afficher_tries_nom
+ *
+ *\param[out]  sorties : les donnes sont donné en sortie dans le fichier resultat_afficher_tries_nom
                 dans le meme repertoire que l'executable
  * \return void
  *
  */
-void tri_client_par_nom(const char *nom_annuaire)
+void tri_clients_par_nom(const char *nom_annuaire)
 {
 
 
@@ -59,7 +56,7 @@ void tri_client_par_nom(const char *nom_annuaire)
 
 
 
-//parcourt le tableau 2 fois-> dans le sens normal et dans le sens inverse
+
     for (int i = 0; i < size; i++)
     {
         for(int j = i+1; j< size; j++)
