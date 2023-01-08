@@ -1,9 +1,12 @@
 /**<
-*\file sauvegarde_annuaire.c
-*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification.Voir(https://en.cppreference.com/w/c/99)
+*\file main.c
+*\brief L'objectif de ce projet etait de concevoir une application de gestion d'annuaire pour une organisation qui possede un ensemble
+de donnees sur ses clients.\n
+Des fonctions pour répondre a cette demande sont données ci-dessous avec des contraintes specifiques.
 *\author Rafik BOUCHENNA G4S1B
 *\date 08/01/2023
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -11,9 +14,9 @@
 #define TAILLE 100
 
 
-/** \brief cette permet d'ecrire mon tableau dans le fichier donner en entrée
+/** \brief cette permet d'ecrire mon tableau dans le fichier donner en entree
  *
- * \param[in] char*nom_annuaire const
+ * \param[in] char* nom_annuaire const
  * \param[in] Client_*p struct
  * \param[in] size int
  * \return void
@@ -25,7 +28,7 @@ void sauvegarde_annuaire(const char*nom_annuaire,struct Client_*p,int size )
 
     for (int i = 0; i < size; i++)
     {
-        //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+
         fprintf(fichier,"%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
     }
     fclose(fichier);
@@ -41,8 +44,6 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
     struct Client_ *p = calloc(1,sizeof(struct Client_));
 
 
-    //fgetc(stdin);//cela evite de faire sauter la saisie de l'utilisateur pour le menu
-    //FILE*annuaire = fopen("annuaire.csv","r");//ouvre le fichier en lecture
 
     FILE*annuaire = fopen(nom_annuaire,"r");//ouvre le fichier en ecriture
 
@@ -219,6 +220,6 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
     free(p);
 
 
-    //return p;
+
 }
 
