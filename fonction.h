@@ -23,7 +23,6 @@ typedef struct Client_
     char telephone_p[SIZE];
     char *mel_p;
     char *profession_p;
-    char **donnes;//tableau 2D allocation dynamique
     char val_chaine1[TAILLECHAINE];
     char val_chaine2[TAILLECHAINE];
     char nom_champ1[TAILLECHAINE];
@@ -72,4 +71,4 @@ typedef struct occurence_ occurence;
 struct Client_ *tabRetourner(int *size,const char *nom_annuaire);
 
 
-struct Client * tableau(int *taille);
+
