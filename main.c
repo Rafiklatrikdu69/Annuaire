@@ -1,8 +1,8 @@
 /**<
-*\file fonction.c
-*\brief L'objectif de ce projet etait de concevoir une application
-        de gestion d'un annuaire pour une organisation qui possedent un ensemble de données sur ses clients
-        des fonctions pour repondre a cette sont donner si dessous avec des contraintes spécifiques
+*\file main.c
+*\brief L'objectif de ce projet était de concevoir une application de gestion d'annuaire pour une organisation qui possède un ensemble
+de données sur ses clients.\n
+Des fonctions pour répondre à cette demande sont données ci-dessous avec des contraintes spécifiques.
 *\author Rafik BOUCHENNA G4S1B
 *\date 08/01/2023
 */
@@ -10,46 +10,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#include <windows.h>
 #include "fonction.h"
-#include <time.h>
-#include <unistd.h>
-/** \brief
- *
- * \return int
- *
- */
+
 
 int main()
 {
-      int i;
-      printf("Chargement du MENU   ");
-    for (i = 0; i < 100; i++)
-    {
-
-
-          printf("%d pourcents",i);
-          sleep(0.5);
-          system("CLS");
-
-
-
-    }
+    int i;
 
     int n;
     char c;
     Client d;
     Ajout_Client a;
 
-//definition des constantes pour les fichiers
 
 
-
-
-
-//saisie_ajout_client(&d);
-
-    /************************ LE MENU **********************/
+    //--------------------------- LE MENU ------------------------------//
 
 
 
@@ -69,13 +44,12 @@ MENU:
         printf("Trier l'annuaire ............................. 4\n");
         printf("Afficher l'annuaire avec filtre .............. 5\n");
         printf("Rendre l'annuaire valide...................... 6\n");
-        printf("Sauvegarder l'annuaire........................ 7\n");
-        printf("Quitter ...................................... 8\n");
+        printf("Quitter ...................................... 7\n");
         printf("Entrez l'annuaire : ");
-char annuaireChoisieEntree[50];
-fflush(stdin);
-    fgets(annuaireChoisieEntree,sizeof(annuaireChoisieEntree),stdin);
-    annuaireChoisieEntree[strcspn(annuaireChoisieEntree,"\r\n")] = '\0';
+        char annuaireChoisieEntree[50];
+        fflush(stdin);
+        fgets(annuaireChoisieEntree,sizeof(annuaireChoisieEntree),stdin);
+        annuaireChoisieEntree[strcspn(annuaireChoisieEntree,"\r\n")] = '\0';
 
 
         printf("Entrez votre choix\n");
@@ -84,9 +58,9 @@ fflush(stdin);
         switch(n)
         {
         case 1:
-
-                saisie(&a);
-                ajouter_Client(annuaireChoisieEntree,a.nom,a.prenom,a.codepostal,a.ville,a.telephone,a.mail,a.profession);
+            Verifier_validite_annuaire(annuaireChoisieEntree);
+            saisie(&a);
+            ajouter_Client(annuaireChoisieEntree,a.nom,a.prenom,a.codepostal,a.ville,a.telephone,a.mail,a.profession);
 
             break;
         case 2:
@@ -97,26 +71,24 @@ fflush(stdin);
             Verifier_validite_annuaire(annuaireChoisieEntree);
             break;
         case 4:
-
-                tri_client_par_nom(annuaireChoisieEntree);
+            Verifier_validite_annuaire(annuaireChoisieEntree);
+            tri_clients_par_nom(annuaireChoisieEntree);
 
             break;
 
         case 5:
-           SaisieFiltre(&d);
+            Verifier_validite_annuaire(annuaireChoisieEntree);
+            SaisieFiltre(&d);
 
-                Filtrer_combiner_deux_champs(annuaireChoisieEntree,d.nom_champ1,d.nom_champ2,d.val_chaine1,d.val_chaine2);
+            Filtrer_combiner_deux_champs(annuaireChoisieEntree,d.nom_champ1,d.nom_champ2,d.val_chaine1,d.val_chaine2);
 
 
             break;
         case 6:
-            //Ecriture_annuaire_clients(&d);
+
             Rendre_annuaire_valide(annuaireChoisieEntree);
             break;
         case 7:
-//            sauvegarde_annuaire("resultat.txt",annuaireChoisieEntree);
-            break;
-        case 8:
             exit(1);
             break;
         default :
