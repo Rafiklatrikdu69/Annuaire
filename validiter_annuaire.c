@@ -1,13 +1,9 @@
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
-
-
+/**<
+*\file validiter_annuaire.c
+*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification.Voir(https://en.cppreference.com/w/c/99)
+*\author Rafik BOUCHENNA G4S1B
+*\date 08/01/2023
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -51,8 +47,7 @@ fflush(stdin);
             {
                 printf("il ya des doublons :");
                 printf("%s et %s \n",p[i].mel_p,p[j].mel_p);
-                verife = 1;
-                return verife;
+                exit(1);
             }
         }
     }
@@ -62,8 +57,7 @@ fflush(stdin);
         {
             printf("champs vide !\n");
             printf("%s,%s,%s,%s,%s,%s,%s",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
-            verife = 1;
-            return verife;
+            exit(1);
         }
     }
 
@@ -116,25 +110,18 @@ void Rendre_annuaire_valide(const char*nom_annuaire)
         }
 
     }
-    for (int i= 0; i < size-1; i++)
-    {
-        //si les adresses a l'indice i et i+1 sont identique alors je vais les deplacer a la fin du tableau
-        if (stricmp(p[i].mel_p, p[i+1].mel_p) == 0)
-        {
-
-            for (int j = i+1; j < size-1; j++)
-            {
-                //deplace l'élement a ma fin du tableau
-                p[j]=p[j+1];
-
+    int i,j,k;
+     for (i = 0; i < size; i++) {
+      for (j = i + 1; j < size;) {
+         if (stricmp(p[i].mel_p, p[j].mel_p)==0) {
+            for (k = j; k < size; k++) {
+               p[k] = p[k + 1];
             }
-            size--;//decremente le compteur
-            i--;//decremente la taille du tableau
-        }
-
-
-
-    }
+            size--;
+         } else
+            j++;
+      }
+   }
 
     sauvegarde_annuaire("annuaireValide.txt",p,size);
 
@@ -147,7 +134,7 @@ void Rendre_annuaire_valide(const char*nom_annuaire)
     free(p);
 
 
-fflush(stdin);
+
 
 }
 
