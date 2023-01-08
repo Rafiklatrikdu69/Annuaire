@@ -1,11 +1,9 @@
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-
+/**<
+*\file filtre_combiner.c
+*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification.Voir(https://en.cppreference.com/w/c/99)
+*\author Rafik BOUCHENNA G4S1B
+*\date 08/01/2023
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -14,17 +12,14 @@
 
 
 
-/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donné dans la fonction filtrer_combiner_deux_champs
-           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donné.\n
- *
- * \param[in] s1 char* chaine du champs numéro 1.
- * \param[in] sch1 char* sous-chaine  pour le champs numéro 1.
- * \param[in] s2 char* chaine du champs numéro 2.
- * \param[in] sch2 char* sous-chaine  pour le champs numéro 2.
- * \param[in] index int la position ou commence la comparaison des caracteres du champs numéro 1.
- * \param[in] index2 int la position ou commence la comparaison des caracteres du champs numéro 2.
- * \param[in] cpt int  compteur pour connaitre de nombre lignes contenu dans l'annuaire.
- *
+/** \brief Cette fonction compare les chaines **valchaine1** et **valchaine2** données dans la fonction filtrer_combiner_deux_champs
+avec les sous-chaines pour ne garder que les données qui correspondent au filtre donné.\n
+*
+
+*\param[in] s1 char* chaine du champ .
+*\param[in] sch1 char* sous-chaine pour le champ .
+*\param[in] index int la position où commence la comparaison des caractères du champ numéro 1.
+*\param[in] cpt int compteur pour connaître le nombre de lignes contenues dans l'annuaire.
  * \return  un entier **trouvee** pour la fonction filtrer_combiner_deux_champs
  *
  */
@@ -45,10 +40,10 @@ int Filtrer(const char *s1,const char *sch1,int cpt)
         }
         if (j == taille_souschaine)
         {
-            return 1; // substr is a substring of str
+            return 1;
         }
     }
-    return 0; // substr is not a substring of str
+    return 0;
 
 
 
@@ -58,7 +53,8 @@ int Filtrer(const char *s1,const char *sch1,int cpt)
 /** \brief Cette fonction filtre les données du fichier annuaire donné en entrée
            suivant 2 champs combiner **val_chaine1** et **val_chaine2**.
  *
- * \param[in] Id_client const Client* la structure qui contient les champs suivant :
+ * \param[in]
+         entrees qui contient les champs suivant :
          nom_p;
          prenom_p;
          code_postal_p;
@@ -69,13 +65,13 @@ int Filtrer(const char *s1,const char *sch1,int cpt)
          val_chaine2;
          nom_champ1;
          nom_champ2;
- *
+ *\brief pré-conditions : nom_annuaire est un fichier valide et val_chaine1 et val_chaine2 ne sont pas des chaines vides
  *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données des clients filtrer
  *
  * \return void
  *
  */
-void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,const char*nom_champ2,const char*val_chaine1,const char*val_chaine2)
+void Filtrer_combiner_deux_champs(const char *nom_annuaire,const char*nom_champ1,const char*nom_champ2,const char*val_chaine1,const char*val_chaine2)
 {
 
 
@@ -92,7 +88,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
     int taille = 0;
     struct Client_*p ;
 
-    p = tabRetourner(&taille,annuaireTXT);
+    p = tabRetourner(&taille,nom_annuaire);
     int size = taille;
 
     printf("le nombre de ligne est %d\n",size);
@@ -1423,8 +1419,15 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
 
 
 }
+/** \brief cette fonction permet la saisie des filtre et des champs sur lequel il s'applique
+ *
+ * \param[in] Client*filtre
+ * \return void
+ *
+ */
 void SaisieFiltre(Client*filtre)
 {
+
     int choixFiltre = 0;
     printf("########################################################################\n");
     printf("#                                                                      #\n");
@@ -1459,10 +1462,12 @@ void SaisieFiltre(Client*filtre)
         printf("#     COMMENCER VOTRE RECHERCHE A PARTIR D'UNE POSITION CHOISI         #\n");
         printf("########################################################################\n");
         printf("Exemple : prenons le Nom : Rafik , avec ce filtre vous pouvez choisir a partir de quelle lettre votre filtre s'applique\n\nsi vous la position 2 alors le filtre s'appliquera a partir de la lettre a et non a la premiere !\n\n");
+            do{
         printf("entrer la position ou vous voulez commencer votre filtre sur le champs numero 1 : \n");
         scanf("%d",&filtre->index);
         printf("entrer la position ou vous voulez commencer votre filtre sur le champs numero 2 : \n");
         scanf("%d",&filtre->index2);
+    }while(filtre->index <=0 || filtre->index2<=0);
     }
 
     printf("Choisissez votre champs numero 1 : ");
@@ -1659,31 +1664,49 @@ void SaisieFiltre(Client*filtre)
 
 
     }
-    printf("entrer valchaine1 : \n");
-    scanf("%s",&filtre->val_chaine1);
-
+    fflush(stdin);
+        printf("entrer valchaine1 : \n");
+        fgets(filtre->val_chaine1,sizeof(filtre->val_chaine1),stdin);
+        filtre->val_chaine1[strcspn(filtre->val_chaine1,"\r\n")] = '\0';
+fflush(stdin);
     printf("entrer valchaine2 : \n");
-    scanf("%s",&filtre->val_chaine2);
+    fgets(filtre->val_chaine2,sizeof(filtre->val_chaine2),stdin);
+    filtre->val_chaine2[strcspn(filtre->val_chaine2,"\r\n")] = '\0';
+
+
 
 
 }
-void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom_champ2,const char*val_chaine1,const char*val_chaine2,Client*filtre)
+/** \brief Cette fonction filtre les données du fichier annuaire donné en entrée avec cette fois ci quelques ameliorations
+
+ *
+ * \param[in]
+         entrees qui contient les champs suivant :
+         nom_p;
+         prenom_p;
+         code_postal_p;
+         ville_p;telephone_p;
+         mel_p;
+         profession_p;
+         val_chaine1;
+         val_chaine2;
+         nom_champ1;
+         nom_champ2;
+         Client*filtre;
+ *\brief pré-conditions : nom_annuaire est un fichier valide et **val_chaine1** et **val_chaine2** ne sont pas des chaines vides
+ *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données des clients filtrer
+ *
+ * \return void
+ *
+ */
+void Filtre_avancer(const char *nom_annuaire,const char*nom_champ1,const char*nom_champ2,const char*val_chaine1,const char*val_chaine2,Client*filtre)
 {
 
-
-    FILE *resultat_filtrer_combiner_deux_champs = fopen("resultat_filtrer_combiner_deux_champs.txt", "w");
-
-
-    if (resultat_filtrer_combiner_deux_champs == NULL)  // si valeur renvoyer est NULL alors le fichier n'existe ou ne peux pas etre ouvert
-    {
-        perror("Erreur lors de l'ouverture du fichier");
-        exit(EXIT_FAILURE);
-    }
 
     int taille = 0;
     struct Client_*p ;
 
-    p = tabRetourner(&taille,annuaireTXT);
+    p = tabRetourner(&taille,nom_annuaire);
     int size = taille;
 
     printf("le nombre de ligne est %d\n",size);
@@ -2999,7 +3022,7 @@ void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom
 
 
 
-    fclose(resultat_filtrer_combiner_deux_champs);
+
     free(p->nom_p);
     free(p->prenom_p);
     free(p->ville_p);
@@ -3011,6 +3034,17 @@ void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom
 
 
 }
+/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donné dans la fonction filtrer_combiner_deux_champs
+           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donné.\n
+ *
+ * \param[in] s1 char* chaine du champs.
+ * \param[in] sch1 char* sous-chaine.
+ * \param[in] index int la position ou commence la comparaison des caracteres du champs numéro 1.
+ * \param[in] cpt int  compteur pour connaitre de nombre lignes contenu dans l'annuaire.
+ *
+ * \return  un entier **trouvee** pour la fonction filtrer_combiner_deux_champs
+ *
+ */
 int Filtrer_avancer(const char *s1,const char *sch1,int index,int cpt)
 {
 
