@@ -12,7 +12,7 @@
 
 
 
-/** \brief La fonction determine si l'annuaire donné en entree est valide suivant differentes contraintes
+/** \brief La fonction determine si l'annuaire donne en entree est valide suivant differentes contraintes
  *
  * \param[in] Client*d const
  * \param size int
@@ -110,6 +110,7 @@ void Rendre_annuaire_valide(const char*nom_annuaire)
         }
 
     }
+    //pour supprimer les doublons
     int i,j,k;
      for (i = 0; i < size; i++) {
       for (j = i + 1; j < size;) {
@@ -125,10 +126,9 @@ void Rendre_annuaire_valide(const char*nom_annuaire)
 
     sauvegarde_annuaire("annuaireValide.txt",p,size);
 
-//ferme les fichiers
 
 
-    //fclose(annuaire);
+
 //libere la memoire
 
     free(p);
