@@ -1664,6 +1664,7 @@ void SaisieFiltre(Client*filtre)
 
 
     }
+    printf("attention les points qui sont presents dans l'annuaire pour le champs telephone doivent etre pris en compte lors de la saisie !!! \n");
     fflush(stdin);
         printf("entrer valchaine1 : \n");
         fgets(filtre->val_chaine1,sizeof(filtre->val_chaine1),stdin);
