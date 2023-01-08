@@ -25,7 +25,7 @@
  */
 int Verifier_validite_annuaire(const char * nom_annuaire)
 {
-    fgetc(stdin);
+fflush(stdin);
     int verife = 0;
     FILE *annuaire = fopen(nom_annuaire, "r");
     if (annuaire == NULL)  // si valeur renvoyer est NULL alors le fichier n'existe ou ne peux pas etre ouvert
@@ -83,12 +83,13 @@ int Verifier_validite_annuaire(const char * nom_annuaire)
     free(p->profession_p);
     free(p);
 
+
 }
 
 
 void Rendre_annuaire_valide(const char*nom_annuaire)
 {
-    fgetc(stdin);//cela evite de faire sauter la saisie de l'utilisateur pour le menu
+
 
     int taille = 0;
     struct Client_*p ;
@@ -146,16 +147,8 @@ void Rendre_annuaire_valide(const char*nom_annuaire)
     free(p);
 
 
-
-
-}
-/** \brief
- *
- * \param Id_client const Client*
- * \return void
- */
-void Ecriture_annuaire_clients(const Client *Id_client)
-{
+fflush(stdin);
 
 }
+
 
