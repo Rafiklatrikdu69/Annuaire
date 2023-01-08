@@ -44,6 +44,8 @@ Réppartition du travail:
 -Allez dans file puis open pour ouvrir le projet
 -Verifier si vous avez la norme C99 car sans cela il risque d'avoir des problemes 
 -Ensuite cliquez sur compiler puis run 
+
+
 #tests
 Vous pouvez tester des a present l'application avec une partie des fonctions faites(Rafik BOUCHENNA)
 Le programme marche mais il existe quelques imperfections au niveau du filtre et de la verification de validité de l'annuaire.
