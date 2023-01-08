@@ -12,14 +12,14 @@
 
 
 
-/** \brief Cette fonction compare les chaines **valchaine1** et **valchaine2** données dans la fonction filtrer_combiner_deux_champs
-avec les sous-chaines pour ne garder que les données qui correspondent au filtre donné.\n
+/** \brief Cette fonction compare les chaines **valchaine1** et **valchaine2** donnees dans la fonction filtrer_combiner_deux_champs
+avec les sous-chaines pour ne garder que les données qui correspondent au filtre donne.\n
 *
 
 *\param[in] s1 char* chaine du champ .
 *\param[in] sch1 char* sous-chaine pour le champ .
-*\param[in] index int la position où commence la comparaison des caractères du champ numéro 1.
-*\param[in] cpt int compteur pour connaître le nombre de lignes contenues dans l'annuaire.
+*\param[in] index int la position ou commence la comparaison des caracteres du champ numero 1.
+*\param[in] cpt int compteur pour connaitre le nombre de lignes contenues dans l'annuaire.
  * \return  un entier **trouvee** pour la fonction filtrer_combiner_deux_champs
  *
  */
@@ -50,7 +50,7 @@ int Filtrer(const char *s1,const char *sch1,int cpt)
 
 }
 
-/** \brief Cette fonction filtre les données du fichier annuaire donné en entrée
+/** \brief Cette fonction filtre les donnees du fichier annuaire donné en entree
            suivant 2 champs combiner **val_chaine1** et **val_chaine2**.
  *
  * \param[in]
@@ -65,7 +65,7 @@ int Filtrer(const char *s1,const char *sch1,int cpt)
          val_chaine2;
          nom_champ1;
          nom_champ2;
- *\brief pré-conditions : nom_annuaire est un fichier valide et val_chaine1 et val_chaine2 ne sont pas des chaines vides
+ *\brief pre-conditions : nom_annuaire est un fichier valide et val_chaine1 et val_chaine2 ne sont pas des chaines vides
  *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données des clients filtrer
  *
  * \return void
@@ -1669,16 +1669,18 @@ void SaisieFiltre(Client*filtre)
         printf("entrer valchaine1 : \n");
         fgets(filtre->val_chaine1,sizeof(filtre->val_chaine1),stdin);
         filtre->val_chaine1[strcspn(filtre->val_chaine1,"\r\n")] = '\0';
+        assert(filtre->val_chaine1[0]!='\0');
 fflush(stdin);
     printf("entrer valchaine2 : \n");
     fgets(filtre->val_chaine2,sizeof(filtre->val_chaine2),stdin);
     filtre->val_chaine2[strcspn(filtre->val_chaine2,"\r\n")] = '\0';
+            assert(filtre->val_chaine2[0]!='\0');
 
 
 
 
 }
-/** \brief Cette fonction filtre les données du fichier annuaire donné en entrée avec cette fois ci quelques ameliorations
+/** \brief Cette fonction filtre les donnees du fichier annuaire donne en entree avec cette fois ci quelques ameliorations
 
  *
  * \param[in]
@@ -1694,8 +1696,8 @@ fflush(stdin);
          nom_champ1;
          nom_champ2;
          Client*filtre;
- *\brief pré-conditions : nom_annuaire est un fichier valide et **val_chaine1** et **val_chaine2** ne sont pas des chaines vides
- *\param[out] le fichier resultat_filtrer_combiner_deux_champs donné en sortie contient les nouvelles données des clients filtrer
+ *\brief pre-conditions : nom_annuaire est un fichier valide et **val_chaine1** et **val_chaine2** ne sont pas des chaines vides
+ *\param[out] le fichier resultat_filtrer_combiner_deux_champs donne en sortie contient les nouvelles données des clients filtrer
  *
  * \return void
  *
@@ -3035,8 +3037,8 @@ void Filtre_avancer(const char *nom_annuaire,const char*nom_champ1,const char*no
 
 
 }
-/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donné dans la fonction filtrer_combiner_deux_champs
-           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donné.\n
+/** \brief Cette fonction compare les chaines **valchaine1** et  **valchaine2** donne dans la fonction filtrer_combiner_deux_champs
+           avec les sous chaines pour ne garder que les donnes qui correspondent au filtre donne.\n
  *
  * \param[in] s1 char* chaine du champs.
  * \param[in] sch1 char* sous-chaine.
