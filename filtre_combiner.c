@@ -96,12 +96,13 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
     int size = taille;
 
     printf("le nombre de ligne est %d\n",size);
+
     if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"prenom")==0)
     {
         printf("nom et prenom\n");
         for(int i = 0; i<size; i++)
         {
-            if(Filtrer(p[i].nom_p,val_chaine1,0)!=1 || Filtrer(p[i].prenom_p,val_chaine2,0)!=1)
+            if(Filtrer(p[i].nom_p,val_chaine1,size)!=1 || Filtrer(p[i].prenom_p,val_chaine2,size)!=1)
             {
 
                 for (int j = i; j < size; j++)
@@ -112,7 +113,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -143,7 +144,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -174,7 +175,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -205,7 +206,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -236,7 +237,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -267,7 +268,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -298,7 +299,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -313,6 +314,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
         sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
 
     }
+    /**PROBLEME **/
     if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"nom")==0)
     {
         printf("profession et nom\n");
@@ -329,7 +331,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -360,7 +362,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -391,7 +393,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -422,7 +424,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -453,7 +455,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -484,7 +486,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -515,7 +517,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -546,7 +548,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -577,7 +579,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -608,7 +610,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -639,7 +641,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -670,7 +672,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -701,7 +703,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -732,7 +734,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -763,7 +765,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -794,7 +796,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -827,7 +829,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -858,7 +860,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -889,7 +891,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -920,7 +922,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -951,7 +953,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -982,7 +984,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1013,7 +1015,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1044,7 +1046,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1075,7 +1077,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1106,7 +1108,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1137,7 +1139,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1168,7 +1170,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1199,7 +1201,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1230,7 +1232,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1261,7 +1263,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1292,7 +1294,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1323,7 +1325,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1354,7 +1356,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1385,7 +1387,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
                 }
                 size--;//decremente le compteur
                 //decremente la taille du tableau
-                //printf("trouver\n");
+
                 i--;
 
             }
@@ -1415,6 +1417,7 @@ void Filtrer_combiner_deux_champs(const char *annuaireTXT,const char*nom_champ1,
     free(p->mel_p);
     free(p->profession_p);
     free(p);
+    fflush(stdin);
 //ferme les fichiers
 
 
@@ -1447,17 +1450,26 @@ void SaisieFiltre(Client*filtre)
     printf("6)Mail\n");
     printf("7)Profession\n");
 
-    printf("Choisissez votre champs numero 1 : ");
-    scanf("%d",&filtre->critere1);
-    printf("Chosissez votre champs numero 2 : ");
-    scanf("%d",&filtre->critere2);
     if(filtre->choixFiltre == 2)
     {
+
+        printf("########################################################################\n");
+        printf("#                                                                      #\n");
+        printf("#     BIENVENUE DANS L'OPTION FILTRE AVANCER ICI VOUS POUVEZ           #\n");
+        printf("#     COMMENCER VOTRE RECHERCHE A PARTIR D'UNE POSITION CHOISI         #\n");
+        printf("########################################################################\n");
+        printf("Exemple : prenons le Nom : Rafik , avec ce filtre vous pouvez choisir a partir de quelle lettre votre filtre s'applique\n\nsi vous la position 2 alors le filtre s'appliquera a partir de la lettre a et non a la premiere !\n\n");
         printf("entrer la position ou vous voulez commencer votre filtre sur le champs numero 1 : \n");
         scanf("%d",&filtre->index);
         printf("entrer la position ou vous voulez commencer votre filtre sur le champs numero 2 : \n");
         scanf("%d",&filtre->index2);
     }
+
+    printf("Choisissez votre champs numero 1 : ");
+    scanf("%d",&filtre->critere1);
+    printf("Chosissez votre champs numero 2 : ");
+    scanf("%d",&filtre->critere2);
+
     int choix = 100*filtre->critere1 + 10*filtre->critere2;
     switch(choix)
     {
@@ -1505,6 +1517,7 @@ void SaisieFiltre(Client*filtre)
     case 170:
         strcpy(filtre->nom_champ1,"nom");
         strcpy(filtre->nom_champ2,"profession");
+        break;
     case 710:
         strcpy(filtre->nom_champ1,"profession");
         strcpy(filtre->nom_champ2,"nom");
@@ -1658,8 +1671,6 @@ void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom
 {
 
 
-
-
     FILE *resultat_filtrer_combiner_deux_champs = fopen("resultat_filtrer_combiner_deux_champs.txt", "w");
 
 
@@ -1676,15 +1687,1314 @@ void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom
     int size = taille;
 
     printf("le nombre de ligne est %d\n",size);
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("nom et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,0)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,0)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf("prenom et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf("nom et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf(" code postal et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf(" ville et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf("telephone et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf("mail et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"nom")==0)
+    {
+        printf("profession et nom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].nom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("code postal et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("ville et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("telephone et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("mail et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"prenom")==0)
+    {
+        printf("profession et prenom\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].prenom_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf(" ville et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf("telephone et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf("mail et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf(" profession et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("telephone et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("mail et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("profession et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf(" mail et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf("profession et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"profession")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("profession mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].profession_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+
+
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("nom et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf("nom et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("nom et mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"nom")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("nom et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].nom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"postal")==0)
+    {
+        printf("prenom et code postal\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].code_postal_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("prenom et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf("prenom et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("prenom et mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"prenom")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("prenom et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].prenom_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"ville")==0)
+    {
+        printf("code postal et ville\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].ville_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf("code postal  et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("code postal  et mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"postal")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("code postal  et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].code_postal_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"tel")==0)
+    {
+        printf("ville  et telephone\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].telephone_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("ville  et mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"ville")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("ville  et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].ville_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"mel")==0)
+    {
+        printf("telephone et mail\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].mel_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"tel")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("tel  et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].telephone_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
+    if(stricmp(nom_champ1,"mel")==0 && stricmp(nom_champ2,"profession")==0)
+    {
+        printf("mail  et profession\n");
+        for(int i = 0; i<size; i++)
+        {
+            if(Filtrer_avancer(p[i].mel_p,val_chaine1,filtre->index,size)!=1 || Filtrer_avancer(p[i].profession_p,val_chaine2,filtre->index2,size)!=1)
+            {
+
+                for (int j = i; j < size; j++)
+                {
+                    //deplace l'élement a ma fin du tableau
+                    p[j]=p[j+1];
+
+                }
+                size--;//decremente le compteur
+                //decremente la taille du tableau
+
+                i--;
+
+            }
+
+
+            //printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        for(int i = 0; i<size; i++)
+        {
+            printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
+        }
+        sauvegarde_annuaire("resultat_filtrer_combiner_deux_champs.txt",p,size);
+
+    }
 
 
 
-    /*struct Client_ est une structure qui represente un client,
-    et p est un pointeur vers un tableau de  struct Client_
-    Calloc initialise tout a zero*/
 
-    int index = 1;
-    int index2 = 1;
 
 
 
@@ -1696,6 +3006,8 @@ void Filtre_avancer(const char *annuaireTXT,const char*nom_champ1,const char*nom
     free(p->mel_p);
     free(p->profession_p);
     free(p);
+    fflush(stdin);
+//ferme les fichiers
 
 
 }
