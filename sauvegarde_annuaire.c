@@ -74,6 +74,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
                 c = fgetc(annuaire);
                 p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
+                p[cpt].nom_p[j] = '\0';
                 break;
             }
             // Insérez le caractère lu dans le tableau et incrémentez le compteur
@@ -98,7 +99,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
 
                 p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
-
+                 p[cpt].prenom_p[j] = '\0';
 
                 break;
             }
@@ -109,6 +110,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
             c = fgetc(annuaire);
         }
 
+
         for(int j= 0;; j++)
         {
             if(c==',' ||c=='\n')
@@ -116,6 +118,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
                 c = fgetc(annuaire);
                 p[cpt].code_postal_p = (char*)realloc(p[cpt].code_postal_p,j+1*sizeof(char));
+                p[cpt].code_postal_p[j] = '\0';
                 break;
             }
             // Insérez le caractère lu dans le tableau et incrémentez le compteur
@@ -132,6 +135,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
                 c = fgetc(annuaire);
                 p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
+                p[cpt].ville_p[j] = '\0';
                 break;
             }
             // Insérez le caractère lu dans le tableau et incrémentez le compteur
@@ -165,6 +169,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
                 c = fgetc(annuaire);
                 p[cpt].mel_p = (char*)realloc(p[cpt].mel_p,j+1*sizeof(char));
+                p[cpt].mel_p[j] = '\0';
                 break;
             }
             // Insérez le caractère lu dans le tableau et incrémentez le compteur
@@ -181,6 +186,7 @@ struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 
                 c = fgetc(annuaire);
                 p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
+                p[cpt].profession_p[j] = '\0';
                 break;
             }
             // Insérez le caractère lu dans le tableau et incrémentez le compteur
