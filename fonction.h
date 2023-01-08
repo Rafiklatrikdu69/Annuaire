@@ -7,7 +7,7 @@
  * \return
  *
  */
-//attention au warning
+
 //declaration de la structure client
 #pragma once//programmation modulaire
 #define SIZE 20
@@ -53,7 +53,7 @@ void Filtrer_combiner_deux_champs(const char *nom_annuaire,const char*nom_champ1
 int Filtrer(const char *s1,const char *sch1,int cpt);
 void Filtre_avancer(const char *nom_annuaire,const char*nom_champ1,const char*nom_champ2,const char*val_chaine1,const char*val_chaine2,Client*filtre);
 int Filtrer_avancer(const char *s1,const char *sch1,int index,int cpt);
-void tri_client_par_nom( const char *nom_annuaire);
+void tri_clients_par_nom( const char *nom_annuaire);
 int Verifier_validite_annuaire(const char * nom_annuaire);
 void Rendre_annuaire_valide(const char *nom_annuaire);
 void SaisieFiltre(Client*filtre);
