@@ -10,14 +10,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
+#include <windows.h>
 #include "fonction.h"
+#include <time.h>
+#include <unistd.h>
 /** \brief
  *
  * \return int
  *
  */
+
 int main()
 {
+      int i;
+      printf("Chargement du MENU   ");
+    for (i = 0; i < 100; i++)
+    {
+
+
+          printf("%d pourcents",i);
+          sleep(0.5);
+          system("CLS");
+
+
+
+    }
 
     int n;
     char c;
@@ -25,7 +42,7 @@ int main()
     Ajout_Client a;
 
 //definition des constantes pour les fichiers
-    char annuaireChoisieEntree[50];
+
 
 
 
@@ -33,6 +50,9 @@ int main()
 //saisie_ajout_client(&d);
 
     /************************ LE MENU **********************/
+
+
+
 
 
 MENU:
@@ -52,8 +72,11 @@ MENU:
         printf("Sauvegarder l'annuaire........................ 7\n");
         printf("Quitter ...................................... 8\n");
         printf("Entrez l'annuaire : ");
+char annuaireChoisieEntree[50];
+fflush(stdin);
+    fgets(annuaireChoisieEntree,sizeof(annuaireChoisieEntree),stdin);
+    annuaireChoisieEntree[strcspn(annuaireChoisieEntree,"\r\n")] = '\0';
 
-        scanf("%s",&annuaireChoisieEntree);
 
         printf("Entrez votre choix\n");
         scanf("%d",&n);
@@ -61,17 +84,10 @@ MENU:
         switch(n)
         {
         case 1:
-            if(Verifier_validite_annuaire(annuaireChoisieEntree)==1)
-            {
-                printf("\nAnnuaireInvalide");
-                return 0;
-            }
-            else
-            {
 
                 saisie(&a);
                 ajouter_Client(annuaireChoisieEntree,a.nom,a.prenom,a.codepostal,a.ville,a.telephone,a.mail,a.profession);
-            }
+
             break;
         case 2:
             Afficher_annuaire_clients(&d);
@@ -81,29 +97,16 @@ MENU:
             Verifier_validite_annuaire(annuaireChoisieEntree);
             break;
         case 4:
-            if(Verifier_validite_annuaire(annuaireChoisieEntree)==1)
-            {
-                printf("\nAnnuaireInvalide");
-                return 0;
-            }
-            else
-            {
+
                 tri_client_par_nom(annuaireChoisieEntree);
-            }
+
             break;
 
         case 5:
-            if(Verifier_validite_annuaire(annuaireChoisieEntree)==1)
-            {
-                printf("\nAnnuaireInvalide");
-                return 0;
-            }
-            else
-            {
-                SaisieFiltre(&d);
+           SaisieFiltre(&d);
 
                 Filtrer_combiner_deux_champs(annuaireChoisieEntree,d.nom_champ1,d.nom_champ2,d.val_chaine1,d.val_chaine2);
-            }
+
 
             break;
         case 6:
@@ -134,7 +137,7 @@ MENU:
             exit(1);
         }
 
-        return 0;
+
     }
 
 
