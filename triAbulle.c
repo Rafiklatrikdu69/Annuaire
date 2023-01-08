@@ -27,7 +27,7 @@
  */
 void tri_client_par_nom(const char *nom_annuaire)
 {
-    fgetc(stdin);
+
 
 
     FILE *annuaire = fopen(nom_annuaire, "r");
@@ -97,5 +97,6 @@ void tri_client_par_nom(const char *nom_annuaire)
 //ferme les fichiers
 
     fclose(annuaire);
+    fflush(stdin);
 
 }
