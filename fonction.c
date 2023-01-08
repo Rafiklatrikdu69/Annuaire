@@ -23,7 +23,7 @@
 //fonction a revoir pour plus de lisibilité
 void Afficher_annuaire_clients(const Client *Id_client)
 {
-    fgetc(stdin);
+    fflush(stdin);
     printf("########################################################################\n");
     printf("#                                                                      #\n");
     printf("#           BIENVENUE DANS L'OPTION  AFFICHAGE DES CLIENTS             #\n");
@@ -77,14 +77,9 @@ void Afficher_annuaire_clients(const Client *Id_client)
 
 
 }
-
-
-
-
-
-/** \brief
- *
- * \param[in] annuaireTXT const char*
+/** \brief cette fonction permet d'ajouter des clients a l'annuaire donner en sortie
+ * preconditions : nom_annuaire est un fichier valide
+ * \param[in] nom_annuaire const char*
  * \param[in] nom_p const char*
  * \param[in] prenom_p const char*
  * \param[in] code_postal_p const char*
@@ -92,7 +87,7 @@ void Afficher_annuaire_clients(const Client *Id_client)
  * \param[in] telephone_p const char*
  * \param[in] mel_p const char*
  * \param[in] profession_p const char*
- *\param[out] resultat_trier_par_nom.txt
+ *\param[out] Sorties : resultat_trier_par_nom.txt
  * \return int
  *
  */
@@ -162,9 +157,15 @@ fprintf(ajout,"%s\n",profession_p);
 
 }
 
+/** \brief cette fonction permet de saisir les differents champs et verifie si l'utilisateur fait une bonne saisie
+ *
+ * \param ajout Ajout_Client*
+ * \return void
+ *
+ */
 void saisie( Ajout_Client *ajout)
 {
-    fgetc(stdin);
+
     printf("########################################################################\n");
     printf("#                                                                      #\n");
     printf("#     BIENVENUE DANS L'OPTION  AJOUT DES CLIENTS ICI VOUS POUVEZ       #\n");
@@ -304,7 +305,7 @@ VILLE:
             /*Verifie si la saisie de l'utilisateur est bonne */
             for(int i = 0; i<strlen(ajout->ville); i++)
             {
-                if((ajout->ville[i]>='a' &&ajout->ville[i]<='z')|| (ajout->ville[i]>='A' && ajout->ville[i]<='Z') || ajout->ville[i]=='-')
+                if((ajout->ville[i]>='a' &&ajout->ville[i]<='z')|| (ajout->ville[i]>='A' && ajout->ville[i]<='Z') || ajout->ville[i]=='-' || ajout->ville[i]==' ')
                 {
                     continue;
 
