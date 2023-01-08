@@ -24,8 +24,14 @@
 void Afficher_annuaire_clients(const Client *Id_client)
 {
     fgetc(stdin);
-    FILE* fichier;
-    FILE *annuaireCSV = fopen("annuaire.csv", "r");
+    printf("########################################################################\n");
+    printf("#                                                                      #\n");
+    printf("#           BIENVENUE DANS L'OPTION  AFFICHAGE DES CLIENTS             #\n");
+    printf("#                                                                      #\n");
+    printf("#                                                                      #\n");
+    printf("########################################################################\n");
+
+
     printf("Voici les differents fichiers que vous pouvez ouvrir : \n");
     puts("resultat_filtrer_combiner_deux_champs.txt\n");
     puts("annuaireValide.txt\n");
@@ -37,219 +43,29 @@ void Afficher_annuaire_clients(const Client *Id_client)
     printf("entrer le nom de l'annuaire que vous voulez afficher : \n");
     fgets(annuaire,50,stdin);
     annuaire[strcspn(annuaire,"\r\n")] = '\0';//au cas ou il ya des \n
-    fichier = fopen(annuaire,"r");//ouverture du fichier en mode lecture
-    if(fichier == NULL)
-    {
-        perror("Erreur d'ouverture du fichier !");
-        exit(EXIT_FAILURE);
-    }
-
-
-
-    Client r;
-
-
-
-    // Vérifiez si le fichier a été ouvert correctement
-    if (annuaireCSV == NULL)  // si valeur renvoyer est NULL alors le fichier n'existe ou ne peux pas etre ouvert
-    {
-        perror("Erreur lors de l'ouverture du fichier");
-        exit(EXIT_FAILURE);
-    }
 
 
 
 
 
+    system("PAUSE");
 
-    r.donnes= (char**) malloc( (sizeof(char*[1000])));//alloue un tableau de 1000 pointeur -> 1000 char
-    if(r.donnes == NULL)
-    {
-        printf("erreur allocation");
-    }
-    for(int i=0; i<1000; i++)
+    int taille = 0;
+    struct Client_*p ;
+
+    p = tabRetourner(&taille,annuaire);
+
+    int size = taille;
+
+
+    for (int i = 0; i < size; i++)
+
     {
 
 
-        r.donnes[i] = (char*) malloc(sizeof(char*[1000]));//alloue un tableau de 1000 char
+        printf("%s,%s,%s,%s,%s,%s,%s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
 
     }
-
-    int cpt = 0;
-    int ligne =0;
-//utilisation d'un tableau a deux dimension pour compter le nombre de ligne
-    while(!feof(fichier)&& !ferror(fichier)) //si ferror est vrai alors le fichier n'est pas lu = probleme et que on est pas a la fin du fichier
-    {
-        if(fgets(r.donnes[ligne],1000,fichier)!= NULL) //lire une chaine de caractere
-        {
-            ligne++;//incremente le nombre de ligne pour passer d'une ligne a une autre
-        }
-    }
-
-    printf("le nombre de ligne du fichier : %d\n",ligne);
-    /*struct Client_ est une structure qui represente un client,
-    et p est un pointeur vers un tableau de  struct Client_
-    Calloc initialise tout a zero*/
-    struct Client_ *p = (struct Client_*)calloc(ligne+1,sizeof(struct Client_));
-
-    int i = 0;
-
-    // Utilisez fgetc pour lire chaque caractère du fichier jusqu'à ce que vous atteigniez la fin du fichier
-
-    int c = fgetc(fichier);
-    rewind(fichier);
-    while(cpt<ligne)
-    {
-
-        p[cpt].nom_p = (char *) calloc (256,sizeof(char));
-        p[cpt].prenom_p = (char *) calloc (256,sizeof(char));
-        p[cpt].ville_p = (char *) calloc (256,sizeof(char));
-        p[cpt].mel_p = (char *) calloc (256,sizeof(char));
-        p[cpt].profession_p = (char *) calloc (256,sizeof(char));
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].nom_p,"\t");
-                p[cpt].nom_p = (char*)realloc(p[cpt].nom_p,j+1*sizeof(char));
-
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].nom_p[j] = (char) c;
-
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].prenom_p,"\t");
-                p[cpt].prenom_p = (char*)realloc(p[cpt].prenom_p,j+1*sizeof(char));
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].prenom_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].code_postal_p,"\t");
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].code_postal_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].ville_p,"\t");
-                p[cpt].ville_p = (char*)realloc(p[cpt].ville_p,j+1*sizeof(char));
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].ville_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].telephone_p,"\t");
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].telephone_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-
-                p[cpt].mel_p = realloc(p[cpt].mel_p,j+1*sizeof(char));
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].mel_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-        for(int j= 0;; j++)
-        {
-            if(c==',' ||c=='\n')
-            {
-
-                c = fgetc(fichier);
-                strtok(p[cpt].profession_p,"\t");
-                p[cpt].profession_p = (char*)realloc(p[cpt].profession_p,j+1*sizeof(char));
-                break;
-            }
-            // Insérez le caractère lu dans le tableau et incrémentez le compteur
-
-            p[cpt].profession_p[j] = (char) c;
-            //lis le caractere suivant
-            c = fgetc(fichier);
-        }
-        cpt++;//incremente le compteur pour passer a la structure suivante
-
-    }
-// inspiration du tri a bulle pour trier les donnes en fonction du nom
-
-
-    for (i = 0; i < cpt; i++)
-    {
-        for(int i = 0; i<200; i++)
-        {
-            printf("-");
-        }
-        printf("\n");
-        printf("%-25s |%-25s |%-25s |%-25s |%-25s |%-50s |%-25s\n",p[i].nom_p,p[i].prenom_p,p[i].code_postal_p,p[i].ville_p,p[i].telephone_p,p[i].mel_p,p[i].profession_p);
-
-    }
-//libere la memoire
-    for(int i=0; i<ligne; i++)
-    {
-
-
-        free(r.donnes[i]);
-        r.donnes[i] = NULL;
-
-    }
-
-    free(r.donnes);
-    r.donnes = NULL;
-
-
 
     free(p->nom_p);
     free(p->prenom_p);
@@ -259,7 +75,7 @@ void Afficher_annuaire_clients(const Client *Id_client)
     free(p);
 //ferme les fichiers
 
-    fclose(fichier);
+
 }
 
 
@@ -297,7 +113,7 @@ void ajouter_Client(const char *nom_annuaire,const char *nom_p,const char *preno
 
 
     int i=0;
-    sauvegarde_annuaire("resultat_ajouter_client.txt",p,size);
+
     //int verife = 0;
     for (i = 0; i < size; i++)
     {
@@ -305,9 +121,11 @@ void ajouter_Client(const char *nom_annuaire,const char *nom_p,const char *preno
         if (stricmp(p[i].mel_p, mel_p) == 0)
         {
             printf("l'adresse existe deja ! %s\n",p[i].mel_p);
-            /*verife = 1;*/
-            break;
+           for(int j= 0;j<size;j++){
+            p[j] = p[j+1];
 
+
+           }
 
         }
         else
@@ -319,10 +137,21 @@ void ajouter_Client(const char *nom_annuaire,const char *nom_p,const char *preno
     }
 
 
-    ;
+    sauvegarde_annuaire("resultat_ajouter_client.txt",p,size);
     fseek(ajout,0,SEEK_END);
-    fprintf(ajout,"%s,%s,%s,%s,%s,%s,%s\n",nom_p,prenom_p,code_postal_p,ville_p,telephone_p,mel_p,profession_p);
+    fprintf(ajout,"%s,%s,%s,%s,%s,",nom_p,prenom_p,code_postal_p,ville_p,mel_p);
+        for(int i = 0;i<strlen(telephone_p);i++){
+                    if(i==8){
+                        fprintf(ajout,"%c%c,",telephone_p[i],telephone_p[i+1]);
+                            break;
+                    }
+                fprintf(ajout,"%c%c.",telephone_p[i],telephone_p[i+1]);
 
+                i++;
+            }
+
+
+fprintf(ajout,"%s\n",profession_p);
 
 //sauvegarde_annuaire("resultat_ajouter_client.txt",annuaireTXT);
 
