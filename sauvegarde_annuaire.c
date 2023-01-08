@@ -1,3 +1,9 @@
+/**<
+*\file sauvegarde_annuaire.c
+*\brief les fonctions si dessous sont faites avec la norme C99 pour plus de simplification.Voir(https://en.cppreference.com/w/c/99)
+*\author Rafik BOUCHENNA G4S1B
+*\date 08/01/2023
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -5,17 +11,17 @@
 #define TAILLE 100
 
 
-/** \brief
+/** \brief cette permet d'ecrire mon tableau dans le fichier donner en entrée
  *
- * \param char*annuaireS const
- * \param Client_*p struct
- * \param size int
+ * \param[in] char*nom_annuaire const
+ * \param[in] Client_*p struct
+ * \param[in] size int
  * \return void
  *
  */
-void sauvegarde_annuaire(const char*annuaireS,struct Client_*p,int size )
+void sauvegarde_annuaire(const char*nom_annuaire,struct Client_*p,int size )
 {
-    FILE*fichier = fopen(annuaireS,"w");
+    FILE*fichier = fopen(nom_annuaire,"w");
 
     for (int i = 0; i < size; i++)
     {
@@ -27,7 +33,7 @@ void sauvegarde_annuaire(const char*annuaireS,struct Client_*p,int size )
 
 
 
-/** \brief
+/** \brief cette fonction prend en parametre l'annuaire en entree ainsi que le nombre de ligne
  */
 struct Client_ *tabRetourner(int *size,const char *nom_annuaire)
 {
