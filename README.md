@@ -49,3 +49,13 @@ Réppartition du travail:
 #tests
 Vous pouvez tester des a present l'application avec une partie des fonctions faites(Rafik BOUCHENNA)
 Le programme marche mais il existe quelques imperfections au niveau du filtre et de la verification de validité de l'annuaire.
+
+
+#Environnement de développement
+
+J'ai executer le code avec la norme C99 pour plus de flexibilté et une meilleure gestion des erreurs.
+
+
+#Doxygen
+
+Dans le repertoire vous pouvez retrouvez la documentation avec le fichier documentation_doxygen.html dans le dossier doxygen/html/html
